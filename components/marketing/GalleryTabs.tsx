@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { Container } from "./Container";
+import { TABS as MANIFEST_TABS } from "@/lib/gallery/manifest";
 
 const TABS = [
-  { id: "listings", label: "Listings", count: "160+", platforms: "Amazon · TikTok Shop" },
-  { id: "lifestyle", label: "Lifestyle", count: "350+", platforms: "All platforms" },
-  { id: "social", label: "Social Media", count: "Coming soon", platforms: "Reels · TikTok · Stories" },
+  { id: "listings", label: "Listings", count: MANIFEST_TABS.listings.length },
+  { id: "lifestyle", label: "Lifestyle", count: MANIFEST_TABS.lifestyle.length },
+  { id: "social", label: "Social Media", count: MANIFEST_TABS.social.length },
 ] as const;
 
 export function GalleryTabs({
