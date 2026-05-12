@@ -3,6 +3,8 @@ import Link from "next/link";
 import { Container } from "@/components/marketing/Container";
 import { PageHero } from "@/components/marketing/PageHero";
 import { Section } from "@/components/marketing/Section";
+import { MagneticButton } from "@/components/motion/MagneticButton";
+import { Reveal } from "@/components/motion/Reveal";
 import { SERVICES } from "@/lib/services";
 
 export const metadata: Metadata = {
@@ -24,37 +26,37 @@ export default function ServicesIndexPage() {
         <Container>
           <div className="grid gap-5 md:grid-cols-2">
             {SERVICES.map((s, i) => (
-              <Link
-                key={s.slug}
-                href={`/services/${s.slug}`}
-                className="surface-card group relative block p-8"
-              >
-                <div className="flex items-start justify-between gap-6">
-                  <div className="flex-1">
-                    <span className="text-xs font-[600] uppercase tracking-[0.22em] text-[color:var(--color-text-lo)]">
-                      {String(i + 1).padStart(2, "0")} ·{" "}
-                      <span style={{ color: "var(--color-gold-500)" }}>
-                        {s.tag}
+              <Reveal key={s.slug} delay={i * 0.04}>
+                <Link
+                  href={`/services/${s.slug}`}
+                  className="surface-card group relative block p-8"
+                >
+                  <div className="flex items-start justify-between gap-6">
+                    <div className="flex-1">
+                      <span className="text-xs font-[600] uppercase tracking-[0.22em] text-[color:var(--color-text-lo)]">
+                        {String(i + 1).padStart(2, "0")} ·{" "}
+                        <span style={{ color: "var(--color-gold-500)" }}>
+                          {s.tag}
+                        </span>
                       </span>
-                    </span>
-                    <h2 className="mt-4 text-[length:var(--text-display-md)] font-[600] tracking-[var(--text-display-md--letter-spacing)]">
-                      {s.title}
-                    </h2>
-                    <p className="mt-3 text-[color:var(--color-text-mid)]">
-                      {s.oneLiner}
-                    </p>
+                      <h2 className="mt-4 text-[length:var(--text-display-md)] font-[600] tracking-[var(--text-display-md--letter-spacing)]">
+                        {s.title}
+                      </h2>
+                      <p className="mt-3 text-[color:var(--color-text-mid)]">
+                        {s.oneLiner}
+                      </p>
+                    </div>
+                    <ArrowIcon />
                   </div>
-                  <ArrowIcon />
-                </div>
-              </Link>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </Container>
       </Section>
 
-      {/* CTA */}
       <Section>
-        <Container className="max-w-4xl text-center">
+        <Reveal className="mx-auto max-w-4xl text-center">
           <h2 className="text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
             Not sure which one you need?
           </h2>
@@ -63,11 +65,11 @@ export default function ServicesIndexPage() {
             tell you which layer to start with and what the rest looks like.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Link href="/contact" className="btn-primary">
+            <MagneticButton href="/contact" className="btn-primary">
               Tell us about your brand
-            </Link>
+            </MagneticButton>
           </div>
-        </Container>
+        </Reveal>
       </Section>
     </main>
   );

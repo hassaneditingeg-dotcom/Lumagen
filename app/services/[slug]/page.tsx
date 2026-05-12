@@ -3,7 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/marketing/Container";
+import { Divider } from "@/components/marketing/Divider";
 import { Section } from "@/components/marketing/Section";
+import { MagneticButton } from "@/components/motion/MagneticButton";
+import { Reveal } from "@/components/motion/Reveal";
 import { MANIFEST, type GalleryCategory } from "@/lib/gallery/manifest";
 import { getAllSlugs, getService, SERVICES } from "@/lib/services";
 
@@ -63,7 +66,7 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
           >
             &larr; All services
           </Link>
-          <div className="mt-8 grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
+          <Reveal className="mt-8 grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
             <div>
               <span className="eyebrow">{service.tag}</span>
               <h1 className="mt-5 text-[length:var(--text-display-xl)] font-[700] leading-[var(--text-display-xl--line-height)] tracking-[var(--text-display-xl--letter-spacing)]">
@@ -73,16 +76,15 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
                 {service.body}
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
-                <Link href="/contact" className="btn-primary">
+                <MagneticButton href="/contact" className="btn-primary">
                   Start with this
-                </Link>
+                </MagneticButton>
                 <Link href="/gallery" className="btn-secondary">
                   See examples
                 </Link>
               </div>
             </div>
 
-            {/* Deliverables card */}
             <aside className="surface-card p-8">
               <span className="eyebrow">What you get</span>
               <ul className="mt-5 space-y-3">
@@ -94,12 +96,12 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
                 ))}
               </ul>
             </aside>
-          </div>
+          </Reveal>
         </Container>
       </section>
 
       <Container>
-        <div className="hairline" />
+        <Divider />
       </Container>
 
       {/* PROCESS */}
@@ -110,25 +112,27 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
             From brief to delivery.
           </h2>
           <ol className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-            {service.process.map((p) => (
-              <li key={p.step} className="surface-card p-7">
-                <span className="text-xs font-[600] uppercase tracking-[0.22em] text-[color:var(--color-gold-500)]">
-                  {p.step}
-                </span>
-                <h3 className="mt-4 text-xl font-[600] tracking-[-0.02em]">
-                  {p.title}
-                </h3>
-                <p className="mt-2 text-sm text-[color:var(--color-text-mid)]">
-                  {p.body}
-                </p>
-              </li>
+            {service.process.map((p, i) => (
+              <Reveal key={p.step} delay={i * 0.05}>
+                <li className="surface-card p-7">
+                  <span className="text-xs font-[600] uppercase tracking-[0.22em] text-[color:var(--color-gold-500)]">
+                    {p.step}
+                  </span>
+                  <h3 className="mt-4 text-xl font-[600] tracking-[-0.02em]">
+                    {p.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-[color:var(--color-text-mid)]">
+                    {p.body}
+                  </p>
+                </li>
+              </Reveal>
             ))}
           </ol>
         </Container>
       </Section>
 
       <Container>
-        <div className="hairline" />
+        <Divider />
       </Container>
 
       {/* SAMPLES */}
@@ -223,7 +227,7 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
       </Section>
 
       <Container>
-        <div className="hairline" />
+        <Divider />
       </Container>
 
       {/* OTHER SERVICES */}

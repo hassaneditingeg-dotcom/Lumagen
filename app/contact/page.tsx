@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/marketing/Container";
 import { ContactForm } from "@/components/marketing/ContactForm";
 import { Section } from "@/components/marketing/Section";
+import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -14,30 +15,36 @@ export default function ContactPage() {
     <main className="relative z-10">
       <section className="relative px-6 pt-32 pb-8 lg:pt-40 lg:pb-12">
         <Container className="max-w-4xl">
-          <span className="eyebrow">Start a project</span>
-          <h1 className="mt-6 text-[length:var(--text-display-xl)] font-[700] leading-[var(--text-display-xl--line-height)] tracking-[var(--text-display-xl--letter-spacing)]">
-            Send us your product.
-          </h1>
-          <p className="mt-7 max-w-2xl text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] text-[color:var(--color-text-mid)]">
-            We&rsquo;ll come back inside 24 hours with a creative direction and
-            a sample hero rendered for your actual SKU &mdash; before you sign
-            anything.
-          </p>
+          <Reveal>
+            <span className="eyebrow">Start a project</span>
+            <h1 className="mt-6 text-[length:var(--text-display-xl)] font-[700] leading-[var(--text-display-xl--line-height)] tracking-[var(--text-display-xl--letter-spacing)]">
+              Send us your product.
+            </h1>
+            <p className="mt-7 max-w-2xl text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] text-[color:var(--color-text-mid)]">
+              We&rsquo;ll come back inside 24 hours with a creative direction and
+              a sample hero rendered for your actual SKU &mdash; before you sign
+              anything.
+            </p>
+          </Reveal>
         </Container>
       </section>
 
       <Section spacing="tight">
         <Container className="max-w-4xl">
-          <ContactForm />
-          <div className="mt-12 grid gap-6 sm:grid-cols-3">
-            <Detail
-              label="Email"
-              value="hello@lumagine.ai"
-              href="mailto:hello@lumagine.ai"
-            />
-            <Detail label="Reply time" value="Within 24 hours" />
-            <Detail label="Based in" value="Cairo, Egypt" />
-          </div>
+          <Reveal delay={0.1}>
+            <ContactForm />
+          </Reveal>
+          <Reveal delay={0.2}>
+            <div className="mt-12 grid gap-6 sm:grid-cols-3">
+              <Detail
+                label="Email"
+                value="hello@lumagine.ai"
+                href="mailto:hello@lumagine.ai"
+              />
+              <Detail label="Reply time" value="Within 24 hours" />
+              <Detail label="Based in" value="Cairo, Egypt" />
+            </div>
+          </Reveal>
         </Container>
       </Section>
     </main>

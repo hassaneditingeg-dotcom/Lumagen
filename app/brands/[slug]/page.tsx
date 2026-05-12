@@ -3,7 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/marketing/Container";
+import { Divider } from "@/components/marketing/Divider";
 import { Section } from "@/components/marketing/Section";
+import { MagneticButton } from "@/components/motion/MagneticButton";
+import { Reveal } from "@/components/motion/Reveal";
 import { getAllBrandSlugs, getBrand } from "@/lib/brands";
 import { MANIFEST } from "@/lib/gallery/manifest";
 
@@ -92,38 +95,40 @@ export default async function BrandPage({ params }: { params: Params }) {
       </section>
 
       <Container>
-        <div className="hairline" />
+        <Divider />
       </Container>
 
       {/* STATS */}
       <Section spacing="tight">
         <Container>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {brand.stats.map((s) => (
-              <div
-                key={s.label}
-                className="border-l border-[color:var(--color-border-strong)] pl-5"
-              >
-                <p className="text-[length:var(--text-display-md)] font-[700] tracking-[var(--text-display-md--letter-spacing)]">
-                  {s.value}
-                </p>
-                <p className="mt-2 text-sm text-[color:var(--color-text-mid)]">
-                  {s.label}
-                </p>
-              </div>
-            ))}
-          </div>
+          <Reveal>
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              {brand.stats.map((s) => (
+                <div
+                  key={s.label}
+                  className="border-l border-[color:var(--color-border-strong)] pl-5"
+                >
+                  <p className="text-[length:var(--text-display-md)] font-[700] tracking-[var(--text-display-md--letter-spacing)]">
+                    {s.value}
+                  </p>
+                  <p className="mt-2 text-sm text-[color:var(--color-text-mid)]">
+                    {s.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
         </Container>
       </Section>
 
       <Container>
-        <div className="hairline" />
+        <Divider />
       </Container>
 
       {/* STORY + APPROACH */}
       <Section>
         <Container>
-          <div className="grid gap-16 lg:grid-cols-[1fr_1.4fr]">
+          <Reveal className="grid gap-16 lg:grid-cols-[1fr_1.4fr]">
             <div>
               <span className="eyebrow">The brief</span>
               <h2 className="mt-4 text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
@@ -152,12 +157,12 @@ export default async function BrandPage({ params }: { params: Params }) {
                 </ul>
               </div>
             </div>
-          </div>
+          </Reveal>
         </Container>
       </Section>
 
       <Container>
-        <div className="hairline" />
+        <Divider />
       </Container>
 
       {/* WHITE-BG HEROES */}
@@ -286,7 +291,7 @@ export default async function BrandPage({ params }: { params: Params }) {
 
       {/* CTA */}
       <Section>
-        <Container className="max-w-4xl text-center">
+        <Reveal className="mx-auto max-w-4xl text-center">
           <h2 className="text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
             Want a system like this for your brand?
           </h2>
@@ -295,11 +300,11 @@ export default async function BrandPage({ params }: { params: Params }) {
             direction and a sample mockup inside 48 hours.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Link href="/contact" className="btn-primary">
+            <MagneticButton href="/contact" className="btn-primary">
               Start a brief
-            </Link>
+            </MagneticButton>
           </div>
-        </Container>
+        </Reveal>
       </Section>
     </main>
   );
