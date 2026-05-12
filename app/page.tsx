@@ -5,6 +5,7 @@ import { Hero3D } from "@/components/marketing/Hero3D";
 import { PlatformMarquee } from "@/components/marketing/PlatformMarquee";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Reveal } from "@/components/motion/Reveal";
+import { TiltCard } from "@/components/motion/TiltCard";
 import { BRANDS } from "@/lib/brands";
 import { MANIFEST } from "@/lib/gallery/manifest";
 
@@ -87,7 +88,7 @@ export default function HomePage() {
           <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((s, i) => (
               <Reveal key={s.title} delay={i * 0.04}>
-                <article className="surface-card p-7">
+                <TiltCard as="article" className="surface-card p-7">
                   <span className="text-xs font-[600] uppercase tracking-[0.22em] text-[color:var(--color-text-lo)]">
                     {String(i + 1).padStart(2, "0")} ·{" "}
                     <span style={{ color: "var(--color-gold-500)" }}>
@@ -100,7 +101,7 @@ export default function HomePage() {
                   <p className="mt-3 text-[color:var(--color-text-mid)]">
                     {s.body}
                   </p>
-                </article>
+                </TiltCard>
               </Reveal>
             ))}
           </div>

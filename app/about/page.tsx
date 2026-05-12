@@ -4,8 +4,10 @@ import { Container } from "@/components/marketing/Container";
 import { Divider } from "@/components/marketing/Divider";
 import { PageHero } from "@/components/marketing/PageHero";
 import { Section } from "@/components/marketing/Section";
+import { Counter } from "@/components/motion/Counter";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Reveal } from "@/components/motion/Reveal";
+import { TiltCard } from "@/components/motion/TiltCard";
 
 export const metadata: Metadata = {
   title: "About",
@@ -14,10 +16,10 @@ export const metadata: Metadata = {
 };
 
 const STATS = [
-  { value: "500+", label: "Curated samples in the library" },
-  { value: "5", label: "Live brand showcases at launch" },
-  { value: "48h", label: "Sample mockup turnaround" },
-  { value: "100%", label: "AI-crafted, no model fees" },
+  { value: 500, suffix: "+", label: "Curated samples in the library" },
+  { value: 5, suffix: "", label: "Live brand showcases at launch" },
+  { value: 48, suffix: "h", label: "Sample mockup turnaround" },
+  { value: 100, suffix: "%", label: "AI-crafted, no model fees" },
 ];
 
 const VALUES = [
@@ -54,7 +56,7 @@ export default function AboutPage() {
                   className="border-l border-[color:var(--color-border-strong)] pl-5"
                 >
                   <p className="text-[length:var(--text-display-md)] font-[700] tracking-[var(--text-display-md--letter-spacing)]">
-                    {s.value}
+                    <Counter value={s.value} suffix={s.suffix} />
                   </p>
                   <p className="mt-2 text-sm text-[color:var(--color-text-mid)]">
                     {s.label}
@@ -123,14 +125,14 @@ export default function AboutPage() {
           <div className="mt-14 grid gap-5 md:grid-cols-3">
             {VALUES.map((v, i) => (
               <Reveal key={v.title} delay={i * 0.05}>
-                <article className="surface-card p-7">
+                <TiltCard as="article" className="surface-card p-7">
                   <h3 className="text-[length:var(--text-display-md)] font-[600] tracking-[var(--text-display-md--letter-spacing)]">
                     {v.title}
                   </h3>
                   <p className="mt-3 text-[color:var(--color-text-mid)]">
                     {v.body}
                   </p>
-                </article>
+                </TiltCard>
               </Reveal>
             ))}
           </div>

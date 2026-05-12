@@ -7,7 +7,7 @@ export type Brand = {
   story: string;
   approach: string[];
   scope: string[];
-  stats: { value: string; label: string }[];
+  stats: { value: number; suffix?: string; label: string }[];
   galleryCategories: ("listings" | "lifestyle" | "white-bg")[];
 };
 
@@ -35,10 +35,10 @@ export const BRANDS: Brand[] = [
       "Social-first creatives (Reels + TikTok + Stories)",
     ],
     stats: [
-      { value: "500+", label: "Curated images delivered" },
-      { value: "5", label: "Product SKUs" },
-      { value: "3", label: "Platforms covered" },
-      { value: "12 days", label: "Brief to launch-ready" },
+      { value: 500, suffix: "+", label: "Curated images delivered" },
+      { value: 5, label: "Product SKUs" },
+      { value: 3, label: "Platforms covered" },
+      { value: 12, suffix: " days", label: "Brief to launch-ready" },
     ],
     galleryCategories: ["white-bg", "lifestyle", "listings"],
   },

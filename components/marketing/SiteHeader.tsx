@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { MagneticLink } from "@/components/motion/MagneticLink";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -63,7 +64,7 @@ export function SiteHeader() {
           {NAV.map((item) => {
             const active = pathname?.startsWith(item.href);
             return (
-              <Link
+              <MagneticLink
                 key={item.href}
                 href={item.href}
                 className={cn(
@@ -74,7 +75,7 @@ export function SiteHeader() {
                 )}
               >
                 {item.label}
-              </Link>
+              </MagneticLink>
             );
           })}
         </nav>

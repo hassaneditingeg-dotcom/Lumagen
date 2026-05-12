@@ -7,6 +7,7 @@ import { Divider } from "@/components/marketing/Divider";
 import { Section } from "@/components/marketing/Section";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Reveal } from "@/components/motion/Reveal";
+import { TiltCard } from "@/components/motion/TiltCard";
 import { MANIFEST, type GalleryCategory } from "@/lib/gallery/manifest";
 import { getAllSlugs, getService, SERVICES } from "@/lib/services";
 
@@ -114,7 +115,7 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
           <ol className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {service.process.map((p, i) => (
               <Reveal key={p.step} delay={i * 0.05}>
-                <li className="surface-card p-7">
+                <TiltCard as="li" className="surface-card p-7">
                   <span className="text-xs font-[600] uppercase tracking-[0.22em] text-[color:var(--color-gold-500)]">
                     {p.step}
                   </span>
@@ -124,7 +125,7 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
                   <p className="mt-2 text-sm text-[color:var(--color-text-mid)]">
                     {p.body}
                   </p>
-                </li>
+                </TiltCard>
               </Reveal>
             ))}
           </ol>

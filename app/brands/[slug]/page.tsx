@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Container } from "@/components/marketing/Container";
 import { Divider } from "@/components/marketing/Divider";
 import { Section } from "@/components/marketing/Section";
+import { Counter } from "@/components/motion/Counter";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Reveal } from "@/components/motion/Reveal";
 import { getAllBrandSlugs, getBrand } from "@/lib/brands";
@@ -109,7 +110,7 @@ export default async function BrandPage({ params }: { params: Params }) {
                   className="border-l border-[color:var(--color-border-strong)] pl-5"
                 >
                   <p className="text-[length:var(--text-display-md)] font-[700] tracking-[var(--text-display-md--letter-spacing)]">
-                    {s.value}
+                    <Counter value={s.value} suffix={s.suffix} />
                   </p>
                   <p className="mt-2 text-sm text-[color:var(--color-text-mid)]">
                     {s.label}

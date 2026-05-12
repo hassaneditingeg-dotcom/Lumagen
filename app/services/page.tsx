@@ -5,6 +5,7 @@ import { PageHero } from "@/components/marketing/PageHero";
 import { Section } from "@/components/marketing/Section";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Reveal } from "@/components/motion/Reveal";
+import { TiltCard } from "@/components/motion/TiltCard";
 import { SERVICES } from "@/lib/services";
 
 export const metadata: Metadata = {
@@ -27,28 +28,30 @@ export default function ServicesIndexPage() {
           <div className="grid gap-5 md:grid-cols-2">
             {SERVICES.map((s, i) => (
               <Reveal key={s.slug} delay={i * 0.04}>
-                <Link
-                  href={`/services/${s.slug}`}
-                  className="surface-card group relative block p-8"
-                >
-                  <div className="flex items-start justify-between gap-6">
-                    <div className="flex-1">
-                      <span className="text-xs font-[600] uppercase tracking-[0.22em] text-[color:var(--color-text-lo)]">
-                        {String(i + 1).padStart(2, "0")} ·{" "}
-                        <span style={{ color: "var(--color-gold-500)" }}>
-                          {s.tag}
+                <TiltCard className="surface-card group relative block">
+                  <Link
+                    href={`/services/${s.slug}`}
+                    className="block p-8"
+                  >
+                    <div className="flex items-start justify-between gap-6">
+                      <div className="flex-1">
+                        <span className="text-xs font-[600] uppercase tracking-[0.22em] text-[color:var(--color-text-lo)]">
+                          {String(i + 1).padStart(2, "0")} ·{" "}
+                          <span style={{ color: "var(--color-gold-500)" }}>
+                            {s.tag}
+                          </span>
                         </span>
-                      </span>
-                      <h2 className="mt-4 text-[length:var(--text-display-md)] font-[600] tracking-[var(--text-display-md--letter-spacing)]">
-                        {s.title}
-                      </h2>
-                      <p className="mt-3 text-[color:var(--color-text-mid)]">
-                        {s.oneLiner}
-                      </p>
+                        <h2 className="mt-4 text-[length:var(--text-display-md)] font-[600] tracking-[var(--text-display-md--letter-spacing)]">
+                          {s.title}
+                        </h2>
+                        <p className="mt-3 text-[color:var(--color-text-mid)]">
+                          {s.oneLiner}
+                        </p>
+                      </div>
+                      <ArrowIcon />
                     </div>
-                    <ArrowIcon />
-                  </div>
-                </Link>
+                  </Link>
+                </TiltCard>
               </Reveal>
             ))}
           </div>
