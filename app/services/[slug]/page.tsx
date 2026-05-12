@@ -1,9 +1,27 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/marketing/Container";
 import { Section } from "@/components/marketing/Section";
+import { MANIFEST, type GalleryCategory } from "@/lib/gallery/manifest";
 import { getAllSlugs, getService, SERVICES } from "@/lib/services";
+
+const SERVICE_SAMPLE_MAP: Record<string, { categories: GalleryCategory[]; count: number; aspect: string }> = {
+  listings: { categories: ["listings", "white-bg"], count: 6, aspect: "aspect-square" },
+  "a-plus": { categories: ["listings"], count: 6, aspect: "aspect-[16/9]" },
+  storefronts: { categories: ["lifestyle"], count: 6, aspect: "aspect-[4/5]" },
+  lifestyle: { categories: ["lifestyle"], count: 6, aspect: "aspect-[4/5]" },
+  social: { categories: ["lifestyle"], count: 6, aspect: "aspect-[9/16]" },
+  packaging: { categories: ["white-bg"], count: 6, aspect: "aspect-square" },
+};
+
+function pickSamples(slug: string) {
+  const cfg = SERVICE_SAMPLE_MAP[slug];
+  if (!cfg) return [];
+  const pool = cfg.categories.flatMap((c) => MANIFEST[c]);
+  return pool.slice(0, cfg.count);
+}
 
 type Params = Promise<{ slug: string }>;
 
@@ -31,6 +49,8 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
   if (!service) notFound();
 
   const others = SERVICES.filter((s) => s.slug !== service.slug).slice(0, 3);
+  const samples = pickSamples(service.slug);
+  const sampleCfg = SERVICE_SAMPLE_MAP[service.slug];
 
   return (
     <main className="relative z-10">
@@ -110,6 +130,55 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
       <Container>
         <div className="hairline" />
       </Container>
+
+      {/* SAMPLES */}
+      {samples.length > 0 && (
+        <>
+          <Section spacing="tight">
+            <Container>
+              <div className="flex items-end justify-between gap-6">
+                <div>
+                  <span className="eyebrow">Recent work</span>
+                  <h2 className="mt-3 text-[length:var(--text-display-md)] font-[700] tracking-[var(--text-display-md--letter-spacing)]">
+                    Examples from the library.
+                  </h2>
+                </div>
+                <Link
+                  href="/gallery"
+                  className="hidden text-sm text-[color:var(--color-text-mid)] hover:text-[color:var(--color-gold-500)] sm:inline-block"
+                >
+                  See all &rarr;
+                </Link>
+              </div>
+              <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
+                {samples.map((entry, i) => (
+                  <div
+                    key={entry.id}
+                    className={`relative ${sampleCfg.aspect} overflow-hidden rounded-[var(--radius-md)] border border-[color:var(--color-border)]`}
+                  >
+                    <Image
+                      src={entry.variants["800"]}
+                      width={entry.width}
+                      height={entry.height}
+                      alt={entry.alt || ""}
+                      sizes="(min-width: 1024px) 16vw, 50vw"
+                      placeholder="blur"
+                      blurDataURL={entry.blurDataURL}
+                      unoptimized
+                      priority={i < 3}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            </Container>
+          </Section>
+
+          <Container>
+            <div className="hairline" />
+          </Container>
+        </>
+      )}
 
       {/* PRICING */}
       <Section>

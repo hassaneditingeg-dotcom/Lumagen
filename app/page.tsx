@@ -1,5 +1,8 @@
 import Link from "next/link";
+import { BrandStrip } from "@/components/marketing/BrandStrip";
 import { Hero3D } from "@/components/marketing/Hero3D";
+import { BRANDS } from "@/lib/brands";
+import { MANIFEST } from "@/lib/gallery/manifest";
 
 export default function HomePage() {
   return (
@@ -82,6 +85,42 @@ export default function HomePage() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <div className="hairline mx-auto max-w-7xl" />
+
+      {/* ===========================================================
+          SHOWCASE — Terra Lotus launch case study
+          =========================================================== */}
+      <section className="relative px-6 py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
+            <div>
+              <span className="eyebrow">Launch case study</span>
+              <h2 className="mt-4 max-w-2xl text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
+                {BRANDS[0].name} &mdash; botanical skincare, full creative system.
+              </h2>
+              <p className="mt-5 max-w-2xl text-[color:var(--color-text-mid)]">
+                {BRANDS[0].oneLiner}
+              </p>
+            </div>
+            <Link
+              href={`/brands/${BRANDS[0].slug}`}
+              className="btn-secondary"
+            >
+              Read the case study
+            </Link>
+          </div>
+
+          <BrandStrip
+            entries={[
+              ...MANIFEST["white-bg"].slice(0, 2),
+              ...MANIFEST.lifestyle.slice(0, 3),
+              ...MANIFEST.listings.slice(0, 3),
+            ]}
+            href={`/brands/${BRANDS[0].slug}`}
+          />
         </div>
       </section>
 

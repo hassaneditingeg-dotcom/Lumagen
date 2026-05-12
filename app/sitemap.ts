@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { getAllBrandSlugs } from "@/lib/brands";
 import { getAllSlugs } from "@/lib/services";
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lumagine.ai";
@@ -16,6 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...getAllSlugs().map((slug) => ({
       url: `${SITE}/services/${slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+    ...getAllBrandSlugs().map((slug) => ({
+      url: `${SITE}/brands/${slug}`,
       lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 0.7,

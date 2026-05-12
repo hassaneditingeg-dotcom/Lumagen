@@ -84,7 +84,6 @@ async function main() {
       const src = join(sourceDir, file);
       const slug = sanitizeSlug(basename(file, extname(file)));
       const meta = await sharp(src).metadata();
-      const aspect = (meta.height ?? 1) / (meta.width ?? 1);
 
       // WebP variants
       for (const width of VARIANTS) {
