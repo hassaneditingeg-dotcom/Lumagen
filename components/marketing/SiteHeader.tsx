@@ -47,9 +47,14 @@ export function SiteHeader() {
           aria-label="Lumagine A.I home"
         >
           <Logomark />
-          <span className="text-lg font-[700] tracking-[-0.02em]">
+          <span className="text-lg font-[700] tracking-[-0.02em] text-[color:var(--color-text-hi)]">
             Lumagine
-            <span style={{ color: "var(--color-gold-500)" }}>.A.I</span>
+            <span
+              className="ml-1.5 align-[0.1em] text-[0.65em] font-[500] uppercase tracking-[0.2em]"
+              style={{ color: "var(--color-gold-500)" }}
+            >
+              A.I
+            </span>
           </span>
         </Link>
 
@@ -130,26 +135,20 @@ export function SiteHeader() {
 function Logomark() {
   return (
     <svg
-      width="28"
-      height="28"
+      width="26"
+      height="26"
       viewBox="0 0 28 28"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <defs>
-        <linearGradient id="lum-gradient" x1="0" y1="0" x2="28" y2="28">
-          <stop offset="0%" stopColor="var(--color-gold-400)" />
-          <stop offset="100%" stopColor="var(--color-cyan-400)" />
-        </linearGradient>
-      </defs>
       <path
         d="M14 2 L24 8 L24 20 L14 26 L4 20 L4 8 Z"
         fill="none"
-        stroke="url(#lum-gradient)"
-        strokeWidth="2"
+        stroke="var(--color-gold-500)"
+        strokeWidth="1.5"
       />
-      <circle cx="14" cy="14" r="3.5" fill="url(#lum-gradient)" />
+      <circle cx="14" cy="14" r="3" fill="var(--color-gold-500)" />
     </svg>
   );
 }

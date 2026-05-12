@@ -38,9 +38,14 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <p className="text-2xl font-[700] tracking-[-0.02em]">
+            <p className="text-2xl font-[700] tracking-[-0.02em] text-[color:var(--color-text-hi)]">
               Lumagine
-              <span style={{ color: "var(--color-gold-500)" }}>.A.I</span>
+              <span
+                className="ml-2 align-[0.15em] text-[0.55em] font-[500] uppercase tracking-[0.22em]"
+                style={{ color: "var(--color-gold-500)" }}
+              >
+                A.I
+              </span>
             </p>
             <p className="mt-4 max-w-sm text-[color:var(--color-text-mid)]">
               Zero to Hero Studio — AI-crafted listings, storefronts, and A+
