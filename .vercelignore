@@ -1,0 +1,5 @@
+# Keep the 1.8GB asset library + legacy reference site out of Vercel deploys.
+# Production gallery images live in Supabase Storage (Phase 2).
+/assets
+/_legacy
+.claude/
