@@ -8,6 +8,8 @@ import { Section } from "@/components/marketing/Section";
 import { Counter } from "@/components/motion/Counter";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Reveal } from "@/components/motion/Reveal";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbSchema, caseStudySchema, SITE } from "@/lib/seo";
 import { getAllBrandSlugs, getBrand } from "@/lib/brands";
 import { MANIFEST } from "@/lib/gallery/manifest";
 
@@ -42,8 +44,24 @@ export default async function BrandPage({ params }: { params: Params }) {
   const listingStrip = MANIFEST.listings.slice(0, 6);
   const whitebgStrip = MANIFEST["white-bg"].slice(0, 6);
 
+  const schemas = [
+    caseStudySchema({
+      name: brand.name,
+      slug: brand.slug,
+      description: brand.oneLiner,
+      image: hero ? `${SITE}${hero.variants["1600"]}` : undefined,
+    }),
+    breadcrumbSchema([
+      { name: "Home", url: SITE },
+      { name: "Gallery", url: `${SITE}/gallery` },
+      { name: brand.name, url: `${SITE}/brands/${brand.slug}` },
+    ]),
+  ];
+
   return (
     <main className="relative z-10">
+      <JsonLd id={`ld-brand-${brand.slug}`} data={schemas} />
+
       {/* HERO */}
       <section className="relative px-6 pt-32 pb-16 lg:pt-40 lg:pb-20">
         <Container>

@@ -6,17 +6,19 @@ const COLUMNS = [
     links: [
       { href: "/about", label: "About" },
       { href: "/services", label: "Services" },
+      { href: "/pricing", label: "Pricing" },
       { href: "/gallery", label: "Gallery" },
       { href: "/contact", label: "Contact" },
     ],
   },
   {
-    label: "Platforms",
+    label: "Services",
     links: [
-      { href: "/services/amazon", label: "Amazon" },
-      { href: "/services/tiktok-shop", label: "TikTok Shop" },
-      { href: "/services/shopify", label: "Shopify" },
+      { href: "/services/listings", label: "Listings" },
       { href: "/services/a-plus", label: "A+ Content" },
+      { href: "/services/storefronts", label: "Storefronts" },
+      { href: "/services/lifestyle", label: "Lifestyle" },
+      { href: "/services/social", label: "Social" },
     ],
   },
   {
@@ -25,6 +27,13 @@ const COLUMNS = [
       { href: "/login", label: "Sign in" },
       { href: "/signup", label: "Create account" },
       { href: "/dashboard", label: "Dashboard" },
+    ],
+  },
+  {
+    label: "Legal",
+    links: [
+      { href: "/privacy", label: "Privacy" },
+      { href: "/terms", label: "Terms" },
     ],
   },
 ];
@@ -36,7 +45,7 @@ export function SiteFooter() {
       style={{ backgroundColor: "rgba(6, 5, 4, 0.65)" }}
     >
       <div className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr]">
           <div>
             <p className="text-2xl font-[700] tracking-[-0.02em] text-[color:var(--color-text-hi)]">
               Lumagine

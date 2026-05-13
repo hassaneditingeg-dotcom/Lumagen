@@ -367,6 +367,27 @@
     background: linear-gradient(90deg, transparent, var(--color-border-strong), transparent);
   }
 
+  /* Skip-to-content — accessible nav for keyboard users (a11y best practice) */
+  .skip-to-content {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -120%);
+    z-index: 100;
+    padding: 0.625rem 1.25rem;
+    background: var(--color-gold-500);
+    color: var(--color-bg-0);
+    font-weight: 600;
+    font-size: 0.875rem;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    transition: transform 200ms var(--ease-out-soft);
+  }
+  .skip-to-content:focus-visible {
+    transform: translate(-50%, 0);
+    outline: 2px solid var(--color-text-hi);
+    outline-offset: 3px;
+  }
+
   /* Form inputs */
   .form-input {
     display: block;

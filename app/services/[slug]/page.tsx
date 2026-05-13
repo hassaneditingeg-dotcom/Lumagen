@@ -8,7 +8,9 @@ import { Section } from "@/components/marketing/Section";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Reveal } from "@/components/motion/Reveal";
 import { TiltCard } from "@/components/motion/TiltCard";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { MANIFEST, type GalleryCategory } from "@/lib/gallery/manifest";
+import { breadcrumbSchema, serviceSchema, SITE } from "@/lib/seo";
 import { getAllSlugs, getService, SERVICES } from "@/lib/services";
 
 const SERVICE_SAMPLE_MAP: Record<string, { categories: GalleryCategory[]; count: number; aspect: string }> = {
@@ -56,8 +58,27 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
   const samples = pickSamples(service.slug);
   const sampleCfg = SERVICE_SAMPLE_MAP[service.slug];
 
+  const schemas = [
+    serviceSchema({
+      name: service.title,
+      slug: service.slug,
+      description: service.body,
+      tiers: service.pricing.map((t) => ({
+        name: t.tier,
+        price: t.price,
+      })),
+    }),
+    breadcrumbSchema([
+      { name: "Home", url: SITE },
+      { name: "Services", url: `${SITE}/services` },
+      { name: service.title, url: `${SITE}/services/${service.slug}` },
+    ]),
+  ];
+
   return (
     <main className="relative z-10">
+      <JsonLd id={`ld-service-${service.slug}`} data={schemas} />
+
       {/* HERO */}
       <section className="relative px-6 pt-32 pb-20 lg:pt-40 lg:pb-24">
         <Container>

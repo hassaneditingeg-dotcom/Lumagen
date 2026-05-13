@@ -3,8 +3,10 @@ import { BeforeAfter } from "@/components/marketing/BeforeAfter";
 import { BrandStrip } from "@/components/marketing/BrandStrip";
 import { Container } from "@/components/marketing/Container";
 import { Divider } from "@/components/marketing/Divider";
+import { FAQ } from "@/components/marketing/FAQ";
 import { FloatingOrbs } from "@/components/marketing/FloatingOrbs";
 import { Hero3D } from "@/components/marketing/Hero3D";
+import { HowItWorks } from "@/components/marketing/HowItWorks";
 import { PlatformLogos } from "@/components/marketing/PlatformLogos";
 import { PricingPreview } from "@/components/marketing/PricingPreview";
 import { StatsStrip } from "@/components/marketing/StatsStrip";
@@ -12,8 +14,11 @@ import { Testimonials } from "@/components/marketing/Testimonials";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Reveal } from "@/components/motion/Reveal";
 import { TiltCard } from "@/components/motion/TiltCard";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { BRANDS } from "@/lib/brands";
+import { FAQ_DATA } from "@/lib/faq";
 import { MANIFEST } from "@/lib/gallery/manifest";
+import { faqPageSchema } from "@/lib/seo";
 
 export default function HomePage() {
   // Pick a vivid before/after pair from the gallery.
@@ -24,6 +29,8 @@ export default function HomePage() {
 
   return (
     <main className="relative z-10">
+      <JsonLd id="ld-faq" data={faqPageSchema(FAQ_DATA)} />
+
       {/* ===========================================================
           HERO  (with subtle floating orbs in background)
           =========================================================== */}
@@ -70,6 +77,31 @@ export default function HomePage() {
           =========================================================== */}
       <PlatformLogos />
       <StatsStrip />
+
+      <Container>
+        <Divider />
+      </Container>
+
+      {/* ===========================================================
+          HOW IT WORKS
+          =========================================================== */}
+      <section className="relative px-6 py-24 lg:py-32">
+        <Container>
+          <Reveal>
+            <div className="mb-12 max-w-3xl">
+              <span className="eyebrow">How it works</span>
+              <h2 className="mt-4 text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
+                Brief to delivered in days, not months.
+              </h2>
+              <p className="mt-5 text-[color:var(--color-text-mid)]">
+                The whole workflow from your inbox to launch-ready imagery —
+                no agency back-and-forth, no studio bookings, no surprises.
+              </p>
+            </div>
+          </Reveal>
+          <HowItWorks />
+        </Container>
+      </section>
 
       <Container>
         <Divider />
@@ -252,6 +284,29 @@ export default function HomePage() {
             </div>
           </Reveal>
           <Testimonials />
+        </Container>
+      </section>
+
+      <Container>
+        <Divider />
+      </Container>
+
+      {/* ===========================================================
+          FAQ
+          =========================================================== */}
+      <section className="relative px-6 py-24 lg:py-32">
+        <Container>
+          <Reveal>
+            <div className="mb-12 max-w-3xl">
+              <span className="eyebrow">Frequently asked</span>
+              <h2 className="mt-4 text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
+                What sellers ask before they brief us.
+              </h2>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <FAQ />
+          </Reveal>
         </Container>
       </section>
 
