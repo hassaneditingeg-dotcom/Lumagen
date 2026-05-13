@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
+import { StickyCTA } from "@/components/marketing/StickyCTA";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -46,6 +47,7 @@ export default function RootLayout({
         <SiteHeader />
         {children}
         <SiteFooter />
+        <StickyCTA hideOn={["/contact"]} />
       </body>
     </html>
   );

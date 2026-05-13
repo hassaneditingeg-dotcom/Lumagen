@@ -449,13 +449,13 @@
   .hero-3d-floor {
     position: absolute;
     left: 50%;
-    bottom: 18%;
-    width: 60%;
-    height: 12%;
+    bottom: 14%;
+    width: 72%;
+    height: 16%;
     transform: translateX(-50%);
     border-radius: 50%;
-    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.55), transparent 70%);
-    filter: blur(8px);
+    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.32) 40%, transparent 75%);
+    filter: blur(14px);
     pointer-events: none;
     z-index: 0;
   }
@@ -518,13 +518,20 @@
       rgba(94, 74, 47, 0.5) 7px
     );
   }
-  .amazon-box .face.front  { transform: translateZ(calc(var(--size) / 2)); }
+  .amazon-box .face.front  {
+    transform: translateZ(calc(var(--size) / 2));
+    background:
+      linear-gradient(135deg, rgba(255, 245, 215, 0.18) 0%, transparent 40%),
+      linear-gradient(135deg, var(--color-cardboard-400) 0%, var(--color-cardboard-600) 100%);
+  }
   .amazon-box .face.back   { transform: rotateY(180deg) translateZ(calc(var(--size) / 2)); }
   .amazon-box .face.right  { transform: rotateY(90deg) translateZ(calc(var(--size) / 2)); }
   .amazon-box .face.left   { transform: rotateY(-90deg) translateZ(calc(var(--size) / 2)); }
   .amazon-box .face.top    {
     transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
-    background: linear-gradient(135deg, var(--color-cardboard-300), var(--color-cardboard-500));
+    background:
+      linear-gradient(165deg, rgba(255, 245, 215, 0.32) 0%, transparent 35%),
+      linear-gradient(135deg, var(--color-cardboard-300), var(--color-cardboard-500));
   }
   .amazon-box .face.bottom {
     transform: rotateX(-90deg) translateZ(calc(var(--size) / 2));

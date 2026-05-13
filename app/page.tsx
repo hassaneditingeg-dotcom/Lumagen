@@ -1,8 +1,14 @@
 import Link from "next/link";
+import { BeforeAfter } from "@/components/marketing/BeforeAfter";
 import { BrandStrip } from "@/components/marketing/BrandStrip";
+import { Container } from "@/components/marketing/Container";
 import { Divider } from "@/components/marketing/Divider";
+import { FloatingOrbs } from "@/components/marketing/FloatingOrbs";
 import { Hero3D } from "@/components/marketing/Hero3D";
-import { PlatformMarquee } from "@/components/marketing/PlatformMarquee";
+import { PlatformLogos } from "@/components/marketing/PlatformLogos";
+import { PricingPreview } from "@/components/marketing/PricingPreview";
+import { StatsStrip } from "@/components/marketing/StatsStrip";
+import { Testimonials } from "@/components/marketing/Testimonials";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Reveal } from "@/components/motion/Reveal";
 import { TiltCard } from "@/components/motion/TiltCard";
@@ -10,13 +16,20 @@ import { BRANDS } from "@/lib/brands";
 import { MANIFEST } from "@/lib/gallery/manifest";
 
 export default function HomePage() {
+  // Pick a vivid before/after pair from the gallery.
+  // "Before" = a raw white-background product shot.
+  // "After" = the AI-crafted lifestyle / in-context scene.
+  const beforeEntry = MANIFEST["white-bg"][0];
+  const afterEntry = MANIFEST.lifestyle[0];
+
   return (
     <main className="relative z-10">
       {/* ===========================================================
-          HERO
+          HERO  (with subtle floating orbs in background)
           =========================================================== */}
-      <section className="relative px-6 pt-28 pb-12 sm:pt-32 lg:pt-40 lg:pb-16">
-        <div className="mx-auto max-w-7xl">
+      <section className="relative overflow-hidden px-6 pt-28 pb-12 sm:pt-32 lg:pt-40 lg:pb-16">
+        <FloatingOrbs />
+        <div className="relative z-10 mx-auto max-w-7xl">
           <div
             className="grid items-center gap-16 lg:grid-cols-[1.05fr_1fr] lg:gap-20"
             style={{ containerType: "inline-size" }}
@@ -53,15 +66,47 @@ export default function HomePage() {
       </section>
 
       {/* ===========================================================
-          PLATFORM MARQUEE
+          TRUST STRIP — platform logos + stats
           =========================================================== */}
-      <div className="relative mt-2 mb-8 lg:mt-6 lg:mb-16">
-        <PlatformMarquee />
-      </div>
+      <PlatformLogos />
+      <StatsStrip />
 
-      <div className="mx-auto max-w-7xl px-6">
+      <Container>
         <Divider />
-      </div>
+      </Container>
+
+      {/* ===========================================================
+          BEFORE / AFTER
+          =========================================================== */}
+      {beforeEntry && afterEntry && (
+        <section className="relative px-6 py-24 lg:py-32">
+          <Container>
+            <Reveal>
+              <div className="mb-12 grid items-end gap-8 lg:grid-cols-[1fr_1fr]">
+                <div>
+                  <span className="eyebrow">The transformation</span>
+                  <h2 className="mt-4 text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
+                    From product photo to scroll-stopping listing.
+                  </h2>
+                </div>
+                <p className="max-w-xl text-[color:var(--color-text-mid)] lg:text-right">
+                  Drag the slider to compare a raw product photo with the
+                  finished AI-crafted scene. Same SKU, same brand &mdash;
+                  one shipped a week later and lifted CTR by 1.8&times;.
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.15}>
+              <BeforeAfter before={beforeEntry} after={afterEntry} />
+            </Reveal>
+          </Container>
+        </section>
+      )}
+
+      <Container>
+        <Divider />
+      </Container>
 
       {/* ===========================================================
           SERVICES
@@ -108,12 +153,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-6">
+      <Container>
         <Divider />
-      </div>
+      </Container>
 
       {/* ===========================================================
-          SHOWCASE — Terra Lotus launch case study
+          SHOWCASE — Terra Lotus
           =========================================================== */}
       <section className="relative px-6 py-24 lg:py-32">
         <div className="mx-auto max-w-7xl">
@@ -150,9 +195,69 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-6">
+      <Container>
         <Divider />
-      </div>
+      </Container>
+
+      {/* ===========================================================
+          PRICING PREVIEW
+          =========================================================== */}
+      <section className="relative px-6 py-24 lg:py-32">
+        <Container>
+          <Reveal>
+            <div className="mb-12 text-center">
+              <span className="eyebrow">Popular packages</span>
+              <h2 className="mt-4 text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
+                Pricing you can actually plan around.
+              </h2>
+              <p className="mx-auto mt-5 max-w-2xl text-[color:var(--color-text-mid)]">
+                Fixed-scope packages with two revision rounds included.
+                Volume discounts on 10+ SKU lines.
+              </p>
+            </div>
+          </Reveal>
+
+          <PricingPreview />
+
+          <Reveal delay={0.2}>
+            <p className="mt-10 text-center text-sm text-[color:var(--color-text-lo)]">
+              See{" "}
+              <Link
+                href="/services"
+                className="underline decoration-[color:var(--color-border-strong)] underline-offset-4 transition-colors hover:text-[color:var(--color-gold-500)] hover:decoration-[color:var(--color-gold-500)]"
+              >
+                full pricing across all six services &rarr;
+              </Link>
+            </p>
+          </Reveal>
+        </Container>
+      </section>
+
+      <Container>
+        <Divider />
+      </Container>
+
+      {/* ===========================================================
+          TESTIMONIALS
+          =========================================================== */}
+      <section className="relative overflow-hidden px-6 py-24 lg:py-32">
+        <FloatingOrbs />
+        <Container className="relative z-10">
+          <Reveal>
+            <div className="mb-12">
+              <span className="eyebrow">What founders say</span>
+              <h2 className="mt-4 max-w-2xl text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
+                Trusted by sellers who scale.
+              </h2>
+            </div>
+          </Reveal>
+          <Testimonials />
+        </Container>
+      </section>
+
+      <Container>
+        <Divider />
+      </Container>
 
       {/* ===========================================================
           CTA BAND
