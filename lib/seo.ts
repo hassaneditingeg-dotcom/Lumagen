@@ -78,7 +78,6 @@ export function serviceSchema(input: {
   name: string;
   slug: string;
   description: string;
-  tiers: { name: string; price: string }[];
 }) {
   return {
     "@context": "https://schema.org",
@@ -94,18 +93,9 @@ export function serviceSchema(input: {
       { "@type": "Country", name: "United Kingdom" },
       { "@type": "Country", name: "Australia" },
     ],
-    offers: {
-      "@type": "AggregateOffer",
-      priceCurrency: "USD",
-      lowPrice: input.tiers[0]?.price.replace(/[^\d.]/g, "") ?? "0",
-      offerCount: input.tiers.length,
-      offers: input.tiers.map((t) => ({
-        "@type": "Offer",
-        name: t.name,
-        price: t.price.replace(/[^\d.]/g, ""),
-        priceCurrency: "USD",
-      })),
-    },
+    // Pricing is project-based / quote-on-request. We deliberately omit
+    // the Offer block here so the schema doesn't imply public prices we
+    // don't publish on-site.
     url: `${SITE}/services/${input.slug}`,
   } as const;
 }

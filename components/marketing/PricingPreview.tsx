@@ -3,19 +3,18 @@ import { Reveal } from "@/components/motion/Reveal";
 import { TiltCard } from "@/components/motion/TiltCard";
 
 /**
- * PricingPreview — three popular packages on the home page, picked
- * from the per-service detail pages. Apple / Stripe pattern: show
- * the price-anchor on the home page so visitors don't have to dig.
+ * PricingPreview — three popular packages, no public dollar amounts.
+ * Premium positioning: package contents + scope, with a "Get a quote"
+ * CTA into the contact form. Keeps the package shape from lib/services.ts
+ * without committing to subscription-style pricing.
  */
-const TIERS = [
+const PACKAGES = [
   {
     name: "Starter Listing",
-    price: "$280",
-    cadence: "per SKU",
     summary:
-      "1 hero + 3 infographic tiles. Perfect for a single SKU launch.",
+      "One product, one purpose. Hero shot + supporting tiles. Perfect for a single-SKU launch.",
     bullets: [
-      "1 hero shot (marketplace-compliant)",
+      "1 hero image (marketplace-compliant)",
       "3 infographic tiles",
       "2 revision rounds",
       "Source files + multi-platform exports",
@@ -25,10 +24,8 @@ const TIERS = [
   },
   {
     name: "Full Listing Carousel",
-    price: "$640",
-    cadence: "per SKU",
     summary:
-      "Hero + 5 infographics + 2 lifestyle + comparison. Our most popular package.",
+      "Our most-shipped package. The complete listing system designed as one coherent story.",
     bullets: [
       "1 hero + 5 infographic tiles",
       "2 lifestyle / in-context scenes",
@@ -41,10 +38,8 @@ const TIERS = [
   },
   {
     name: "A+ Content Set",
-    price: "$890",
-    cadence: "per ASIN",
     summary:
-      "Full A+ module set for your hero product. Mobile-optimized.",
+      "Brand story panels beneath your detail page. Built to your category's conversion playbook.",
     bullets: [
       "5–7 A+ modules",
       "Brand story sequence",
@@ -60,7 +55,7 @@ const TIERS = [
 export function PricingPreview() {
   return (
     <div className="grid gap-5 md:grid-cols-3">
-      {TIERS.map((tier, i) => (
+      {PACKAGES.map((tier, i) => (
         <Reveal key={tier.name} delay={i * 0.05}>
           <TiltCard
             className={`surface-card relative flex h-full flex-col p-8 ${
@@ -76,22 +71,14 @@ export function PricingPreview() {
                   boxShadow: "0 0 24px rgba(201, 168, 76, 0.4)",
                 }}
               >
-                Most popular
+                Most shipped
               </span>
             )}
             <h3 className="text-xl font-[600] tracking-[-0.02em]">{tier.name}</h3>
-            <div className="mt-5 flex items-baseline gap-2">
-              <span className="text-[length:var(--text-display-md)] font-[700] tracking-[var(--text-display-md--letter-spacing)]">
-                {tier.price}
-              </span>
-              <span className="text-sm text-[color:var(--color-text-lo)]">
-                {tier.cadence}
-              </span>
-            </div>
-            <p className="mt-3 text-sm text-[color:var(--color-text-mid)]">
+            <p className="mt-4 text-sm text-[color:var(--color-text-mid)]">
               {tier.summary}
             </p>
-            <ul className="mt-6 flex-1 space-y-2.5 text-sm text-[color:var(--color-text-mid)]">
+            <ul className="mt-7 flex-1 space-y-2.5 text-sm text-[color:var(--color-text-mid)]">
               {tier.bullets.map((b) => (
                 <li key={b} className="flex gap-2.5">
                   <CheckIcon />
@@ -100,14 +87,14 @@ export function PricingPreview() {
               ))}
             </ul>
             <Link
-              href={tier.href}
-              className={`mt-7 inline-flex h-11 items-center justify-center rounded-full text-sm font-[600] transition-colors ${
+              href="/contact"
+              className={`mt-8 inline-flex h-11 items-center justify-center rounded-full text-sm font-[600] transition-colors ${
                 tier.featured
                   ? "bg-[color:var(--color-gold-500)] text-[color:var(--color-bg-0)] hover:bg-[color:var(--color-gold-400)]"
                   : "border border-[color:var(--color-border-strong)] text-[color:var(--color-text-hi)] hover:bg-[rgba(201,168,76,0.06)] hover:border-[color:var(--color-border-bright)]"
               }`}
             >
-              See details
+              Get a quote
             </Link>
           </TiltCard>
         </Reveal>

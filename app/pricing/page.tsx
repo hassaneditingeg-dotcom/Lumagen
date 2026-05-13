@@ -12,27 +12,27 @@ import { breadcrumbSchema, SITE } from "@/lib/seo";
 import { SERVICES } from "@/lib/services";
 
 export const metadata: Metadata = {
-  title: "Pricing",
+  title: "Packages",
   description:
-    "Transparent fixed-scope pricing across listings, A+ Content, storefronts, lifestyle imagery, social creatives, and packaging. Volume discounts on 10+ SKU lines.",
+    "Every package across listings, A+ Content, storefronts, lifestyle imagery, social creatives, and packaging. Project-based scoping, two revision rounds included, quote within 24 hours.",
   alternates: { canonical: "/pricing" },
 };
 
-export default function PricingPage() {
+export default function PackagesPage() {
   return (
-    <main className="relative z-10" id="pricing-main">
+    <main className="relative z-10">
       <JsonLd
         id="ld-breadcrumb-pricing"
         data={breadcrumbSchema([
           { name: "Home", url: SITE },
-          { name: "Pricing", url: `${SITE}/pricing` },
+          { name: "Packages", url: `${SITE}/pricing` },
         ])}
       />
 
       <PageHero
-        eyebrow="Pricing"
-        title="Fixed scope. Honest numbers."
-        body="Every package ships with two revision rounds included. No hidden fees, no per-image surcharges, no minimum commitment. Volume discounts kick in at 10+ SKU lines."
+        eyebrow="Packages"
+        title="One scope. One quote. No subscriptions."
+        body="Each project gets its own one-page scope agreement. Every package includes two revision rounds, source files, and platform-specific exports. Send a brief and we'll come back inside 24 hours with a quote tailored to your SKU mix and platforms."
       />
 
       <Section spacing="tight">
@@ -89,12 +89,15 @@ export default function PricingPage() {
                     <h3 className="text-lg font-[600] tracking-[-0.02em]">
                       {tier.tier}
                     </h3>
-                    <p className="mt-4 text-[length:var(--text-display-md)] font-[700] tracking-[var(--text-display-md--letter-spacing)]">
-                      {tier.price}
-                    </p>
                     <p className="mt-3 flex-1 text-sm text-[color:var(--color-text-mid)]">
                       {tier.description}
                     </p>
+                    <Link
+                      href="/contact"
+                      className="mt-6 inline-flex h-10 items-center justify-center rounded-full border border-[color:var(--color-border-strong)] text-xs font-[600] uppercase tracking-[0.18em] text-[color:var(--color-text-hi)] transition-colors hover:bg-[rgba(201,168,76,0.06)] hover:border-[color:var(--color-border-bright)]"
+                    >
+                      Get a quote
+                    </Link>
                   </TiltCard>
                 </Reveal>
               ))}
@@ -115,9 +118,10 @@ export default function PricingPage() {
             Not sure which package fits?
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-[length:var(--text-body-lg)] text-[color:var(--color-text-mid)]">
-            Send a brief on what you&rsquo;re selling and where, and we&rsquo;ll
-            tell you which layer to start with — usually it&rsquo;s the listing
-            carousel, then A+, then storefront.
+            Send a brief on what you&rsquo;re selling and where. We&rsquo;ll
+            tell you which layer to start with and what the rest looks like
+            &mdash; usually it&rsquo;s the listing carousel, then A+,
+            then storefront.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <MagneticButton href="/contact" className="btn-primary">

@@ -30,9 +30,9 @@ export const FAQ_DATA: { question: string; answer: string }[] = [
       "Yes — Premium and standard A+ module sets, all mobile-optimized, exported at Amazon's required dimensions (970×600, 1464×600, etc.). See the A+ Content service for module options.",
   },
   {
-    question: "How much does it cost?",
+    question: "How does pricing work?",
     answer:
-      "Listing packages start at $280 (Starter — 1 hero + 3 infographics) and scale to $640 for the full carousel. A+ Content sets start at $890. Storefront designs from $1,400. Volume discounts on 10+ SKU lines. See the pricing page for the full breakdown.",
+      "Project-based, not subscription-based. Every brief gets a tailored quote within 24 hours, scoped to your SKU mix and platforms. Each package includes two revision rounds, source files, and platform-specific exports. Volume discounts kick in at 10+ SKU lines.",
   },
   {
     question: "Can you match my existing brand guidelines?",

@@ -63,10 +63,6 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
       name: service.title,
       slug: service.slug,
       description: service.body,
-      tiers: service.pricing.map((t) => ({
-        name: t.tier,
-        price: t.price,
-      })),
     }),
     breadcrumbSchema([
       { name: "Home", url: SITE },
@@ -206,20 +202,25 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
         </>
       )}
 
-      {/* PRICING */}
+      {/* PACKAGES */}
       <Section>
         <Container>
-          <span className="eyebrow">Pricing</span>
+          <span className="eyebrow">Packages</span>
           <h2 className="mt-4 max-w-2xl text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
-            Pick your tier. Every package includes 2 revisions.
+            Three scopes. One quote per project.
           </h2>
+          <p className="mt-4 max-w-2xl text-[color:var(--color-text-mid)]">
+            Every package includes two revision rounds, source files, and
+            platform-specific exports. Send a brief and we&rsquo;ll come back
+            with a tailored quote inside 24 hours.
+          </p>
           <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {service.pricing.map((tier, i) => {
-              const featured = i === 1; // middle tier
+              const featured = i === 1;
               return (
-                <article
+                <TiltCard
                   key={tier.tier}
-                  className={`surface-card p-7 ${featured ? "ring-1 ring-[color:var(--color-border-strong)]" : ""}`}
+                  className={`surface-card flex h-full flex-col p-7 ${featured ? "ring-1 ring-[color:var(--color-border-strong)]" : ""}`}
                 >
                   {featured && (
                     <span
@@ -229,19 +230,26 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
                         color: "var(--color-gold-500)",
                       }}
                     >
-                      Most popular
+                      Most shipped
                     </span>
                   )}
                   <h3 className="text-xl font-[600] tracking-[-0.02em]">
                     {tier.tier}
                   </h3>
-                  <p className="mt-4 text-[length:var(--text-display-md)] font-[700] tracking-[var(--text-display-md--letter-spacing)]">
-                    {tier.price}
-                  </p>
-                  <p className="mt-3 text-sm text-[color:var(--color-text-mid)]">
+                  <p className="mt-4 flex-1 text-sm text-[color:var(--color-text-mid)]">
                     {tier.description}
                   </p>
-                </article>
+                  <Link
+                    href="/contact"
+                    className={`mt-6 inline-flex h-10 items-center justify-center rounded-full text-xs font-[600] uppercase tracking-[0.18em] transition-colors ${
+                      featured
+                        ? "bg-[color:var(--color-gold-500)] text-[color:var(--color-bg-0)] hover:bg-[color:var(--color-gold-400)]"
+                        : "border border-[color:var(--color-border-strong)] text-[color:var(--color-text-hi)] hover:bg-[rgba(201,168,76,0.06)] hover:border-[color:var(--color-border-bright)]"
+                    }`}
+                  >
+                    Get a quote
+                  </Link>
+                </TiltCard>
               );
             })}
           </div>

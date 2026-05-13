@@ -3,6 +3,16 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { GalleryEntry } from "@/lib/gallery/manifest";
+import { cn } from "@/lib/utils";
+
+/**
+ * GalleryGrid — editorial asymmetric grid (4-col on desktop, 2-col on mobile)
+ * where every 5th tile becomes a 2×2 feature. CSS `grid-auto-flow: dense`
+ * lets smaller tiles fill the natural gaps, producing a magazine-spread
+ * rhythm instead of a uniform Pinterest column.
+ *
+ * Tiles open the lightbox on click — same behavior as before.
+ */
 
 export function GalleryGrid({ entries }: { entries: GalleryEntry[] }) {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
@@ -17,29 +27,85 @@ export function GalleryGrid({ entries }: { entries: GalleryEntry[] }) {
 
   return (
     <>
-      <div className="columns-1 gap-3 sm:columns-2 md:columns-3 lg:columns-4">
-        {entries.map((entry, i) => (
-          <button
-            key={entry.id}
-            type="button"
-            onClick={() => setActiveIdx(i)}
-            className="group mb-3 block w-full overflow-hidden rounded-[var(--radius-md)] border border-[color:var(--color-border)] break-inside-avoid"
-            aria-label={`Open ${entry.alt || "image"} in lightbox`}
-          >
-            <Image
-              src={entry.variants["800"]}
-              width={entry.width}
-              height={entry.height}
-              alt={entry.alt || ""}
-              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-              placeholder="blur"
-              blurDataURL={entry.blurDataURL}
-              unoptimized
-              priority={i < 4}
-              className="h-auto w-full transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-            />
-          </button>
-        ))}
+      <div
+        className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-5"
+        style={{
+          gridAutoFlow: "dense",
+          gridAutoRows: "minmax(180px, auto)",
+        }}
+      >
+        {entries.map((entry, i) => {
+          // Every 5th tile (starting at 0) becomes a feature spanning 2×2 on
+          // desktop and a wide 2×1 on mobile. The rest fill the gaps.
+          const isFeature = i % 5 === 0;
+          return (
+            <button
+              key={entry.id}
+              type="button"
+              onClick={() => setActiveIdx(i)}
+              className={cn(
+                "group relative block w-full overflow-hidden rounded-[var(--radius-md)] border border-[color:var(--color-border)] transition-[border-color,transform] duration-500 ease-out hover:border-[color:var(--color-border-strong)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-gold-500)]",
+                isFeature
+                  ? "col-span-2 row-span-2 lg:col-span-2 lg:row-span-2"
+                  : "col-span-1 row-span-1",
+              )}
+              style={{ aspectRatio: isFeature ? "1 / 1" : "4 / 5" }}
+              aria-label={`Open ${entry.alt || "image"} in lightbox`}
+            >
+              <Image
+                src={isFeature ? entry.variants["1600"] : entry.variants["800"]}
+                width={entry.width}
+                height={entry.height}
+                alt={entry.alt || ""}
+                sizes={
+                  isFeature
+                    ? "(min-width: 1024px) 50vw, 100vw"
+                    : "(min-width: 1024px) 25vw, 50vw"
+                }
+                placeholder="blur"
+                blurDataURL={entry.blurDataURL}
+                unoptimized
+                priority={i < 2}
+                loading={i < 4 ? "eager" : "lazy"}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+              />
+              {/* Vignette on hover — sells depth without overlay text */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                style={{
+                  background:
+                    "linear-gradient(180deg, transparent 55%, rgba(6, 5, 4, 0.55))",
+                }}
+              />
+              {/* Cursor caret — discoverable but quiet */}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute right-3 bottom-3 inline-flex h-8 w-8 items-center justify-center rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                style={{
+                  background: "rgba(13, 12, 10, 0.6)",
+                  border: "1px solid var(--color-border-strong)",
+                  backdropFilter: "blur(8px)",
+                }}
+              >
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M 3 6 H 9 M 6 3 V 9"
+                    stroke="var(--color-gold-500)"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+            </button>
+          );
+        })}
       </div>
 
       {activeIdx !== null && (
@@ -79,7 +145,6 @@ function Lightbox({
     [entries.length],
   );
 
-  // Lock body scroll while open
   useEffect(() => {
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -88,7 +153,6 @@ function Lightbox({
     };
   }, []);
 
-  // Keyboard nav
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -99,7 +163,6 @@ function Lightbox({
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose, prev, next]);
 
-  // Touch swipe (≥40px horizontal triggers nav)
   const onTouchStart = (e: React.TouchEvent) => {
     const t = e.touches[0];
     touchStart.current = { x: t.clientX, y: t.clientY };
@@ -125,15 +188,16 @@ function Lightbox({
       aria-modal="true"
       aria-label="Image viewer"
       onClick={(e) => {
-        // Click on the backdrop (not the image) closes
         if (e.target === e.currentTarget) onClose();
       }}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
       className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8"
-      style={{ backgroundColor: "rgba(4, 4, 4, 0.92)", backdropFilter: "blur(10px)" }}
+      style={{
+        backgroundColor: "rgba(4, 4, 4, 0.94)",
+        backdropFilter: "blur(14px)",
+      }}
     >
-      {/* Image */}
       <Image
         key={entry.id}
         src={entry.variants["1600"]}
@@ -144,10 +208,9 @@ function Lightbox({
         blurDataURL={entry.blurDataURL}
         unoptimized
         priority
-        className="max-h-[90vh] w-auto max-w-[92vw] rounded-[var(--radius-md)] object-contain"
+        className="max-h-[88vh] w-auto max-w-[92vw] rounded-[var(--radius-md)] object-contain"
       />
 
-      {/* Close */}
       <button
         type="button"
         onClick={onClose}
@@ -158,7 +221,6 @@ function Lightbox({
         <CloseIcon />
       </button>
 
-      {/* Prev/next */}
       <button
         type="button"
         onClick={prev}
@@ -178,13 +240,15 @@ function Lightbox({
         <ArrowIcon direction="right" />
       </button>
 
-      {/* Counter + caption */}
       <div className="pointer-events-none absolute inset-x-0 bottom-4 flex items-center justify-center gap-3 text-xs sm:bottom-6">
         <span
           className="rounded-full px-3 py-1.5 font-[600] text-[color:var(--color-text-mid)] backdrop-blur-md"
-          style={{ backgroundColor: "rgba(13, 11, 9, 0.6)", border: "1px solid var(--color-border)" }}
+          style={{
+            backgroundColor: "rgba(13, 11, 9, 0.6)",
+            border: "1px solid var(--color-border)",
+          }}
         >
-          {idx + 1} / {entries.length}
+          {String(idx + 1).padStart(2, "0")} / {String(entries.length).padStart(2, "0")}
         </span>
       </div>
     </div>
@@ -194,7 +258,12 @@ function Lightbox({
 function CloseIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-      <path d="M3 3 L15 15 M15 3 L3 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path
+        d="M3 3 L15 15 M15 3 L3 15"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
@@ -209,7 +278,13 @@ function ArrowIcon({ direction }: { direction: "left" | "right" }) {
       style={{ transform: direction === "right" ? "scaleX(-1)" : undefined }}
       aria-hidden="true"
     >
-      <path d="M11 4 L5 9 L11 14" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M11 4 L5 9 L11 14"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
