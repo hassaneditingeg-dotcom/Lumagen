@@ -192,7 +192,7 @@ export default async function BrandPage({ params }: { params: Params }) {
             Listing-ready white-background heroes.
           </h2>
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
-            {whitebgStrip.map((entry, i) => (
+            {whitebgStrip.map((entry) => (
               <div
                 key={entry.id}
                 className="relative aspect-square overflow-hidden rounded-[var(--radius-md)] border border-[color:var(--color-border)]"
@@ -206,7 +206,7 @@ export default async function BrandPage({ params }: { params: Params }) {
                   placeholder="blur"
                   blurDataURL={entry.blurDataURL}
                   unoptimized
-                  priority={i < 3}
+                  loading="lazy"
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -223,7 +223,7 @@ export default async function BrandPage({ params }: { params: Params }) {
             In the moments that matter.
           </h2>
           <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
-            {lifestyleStrip.map((entry, i) => (
+            {lifestyleStrip.map((entry) => (
               <div
                 key={entry.id}
                 className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-md)] border border-[color:var(--color-border)]"
@@ -237,7 +237,7 @@ export default async function BrandPage({ params }: { params: Params }) {
                   placeholder="blur"
                   blurDataURL={entry.blurDataURL}
                   unoptimized
-                  priority={i < 3}
+                  loading="lazy"
                   className="h-full w-full object-cover"
                 />
               </div>

@@ -177,7 +177,7 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
                 </Link>
               </div>
               <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
-                {samples.map((entry, i) => (
+                {samples.map((entry) => (
                   <div
                     key={entry.id}
                     className={`relative ${sampleCfg.aspect} overflow-hidden rounded-[var(--radius-md)] border border-[color:var(--color-border)]`}
@@ -191,7 +191,7 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
                       placeholder="blur"
                       blurDataURL={entry.blurDataURL}
                       unoptimized
-                      priority={i < 3}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                   </div>

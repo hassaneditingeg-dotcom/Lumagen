@@ -34,7 +34,7 @@ export function BrandStrip({
                 placeholder="blur"
                 blurDataURL={entry.blurDataURL}
                 unoptimized
-                priority={i < 2}
+                loading={i < 2 ? "eager" : "lazy"}
                 className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
               />
             </div>

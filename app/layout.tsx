@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { StickyCTA } from "@/components/marketing/StickyCTA";
+import { WebVitals } from "@/components/perf/WebVitals";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/seo";
 import "./globals.css";
@@ -80,6 +81,7 @@ export default function RootLayout({
       <body>
         <JsonLd id="ld-organization" data={organizationSchema()} />
         <JsonLd id="ld-website" data={websiteSchema()} />
+        <WebVitals />
         <a href="#main" className="skip-to-content">Skip to content</a>
         <SiteHeader />
         <div id="main">
