@@ -22,13 +22,13 @@ export default function LoginPage() {
           </p>
           <div className="mt-8 flex flex-col gap-3">
             <Link href="/contact" className="btn-primary">
-              Reserve early access
+              Reserve Early Access
             </Link>
             <Link
               href="/"
               className="text-sm text-[color:var(--color-text-mid)] transition-colors hover:text-[color:var(--color-text-hi)]"
             >
-              &larr; Back home
+              &larr; Back Home
             </Link>
           </div>
         </div>

@@ -11,17 +11,17 @@ const STEPS = [
   {
     n: "01",
     title: "Send a brief",
-    body: "Share your SKU, references, and target platforms. Takes five minutes — we follow up the same business day.",
+    body: "Share your SKU, references, and target platforms. The first reply confirms fit, scope, and what proof we still need from you.",
   },
   {
     n: "02",
     title: "Approve a sample",
-    body: "Within 48 hours we deliver a single hero image rendered for your actual product so you can see our direction before committing.",
+    body: "For qualified briefs, the first sample direction usually arrives within 48 hours so you can judge the visual path before committing.",
   },
   {
     n: "03",
     title: "Ship the full set",
-    body: "Approved direction goes into production. Full carousel, A+, storefront, or social pack delivered in 5–9 working days with two revision rounds.",
+    body: "Approved direction goes into production. Most focused packages land in 5–9 working days with two revision rounds and platform-ready exports.",
   },
 ];
 

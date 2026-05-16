@@ -134,6 +134,8 @@ function Lightbox({
 }) {
   const [idx, setIdx] = useState(startIdx);
   const dialogRef = useRef<HTMLDivElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
 
   const prev = useCallback(
@@ -146,10 +148,14 @@ function Lightbox({
   );
 
   useEffect(() => {
+    previousFocusRef.current =
+      document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
     return () => {
       document.body.style.overflow = prevOverflow;
+      previousFocusRef.current?.focus();
     };
   }, []);
 
@@ -158,6 +164,21 @@ function Lightbox({
       if (e.key === "Escape") onClose();
       else if (e.key === "ArrowLeft") prev();
       else if (e.key === "ArrowRight") next();
+      else if (e.key === "Tab") {
+        const buttons = dialogRef.current?.querySelectorAll<HTMLButtonElement>(
+          "button:not([disabled])",
+        );
+        if (!buttons?.length) return;
+        const first = buttons[0];
+        const last = buttons[buttons.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -192,7 +213,7 @@ function Lightbox({
       }}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8"
+      className="fixed inset-0 z-[100] flex touch-pan-y items-center justify-center overscroll-contain p-4 sm:p-8"
       style={{
         backgroundColor: "rgba(4, 4, 4, 0.94)",
         backdropFilter: "blur(14px)",
@@ -212,6 +233,7 @@ function Lightbox({
       />
 
       <button
+        ref={closeRef}
         type="button"
         onClick={onClose}
         className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--color-border)] text-[color:var(--color-text-hi)] backdrop-blur-md transition-colors hover:bg-[color:var(--color-bg-2)] sm:right-6 sm:top-6"

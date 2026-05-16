@@ -4,6 +4,7 @@ import {
   motion,
   useMotionTemplate,
   useMotionValue,
+  useReducedMotion,
   useSpring,
 } from "motion/react";
 import { useRef, useState, type ReactNode } from "react";
@@ -31,6 +32,7 @@ export function TiltCard({
   spotlight?: boolean;
   as?: "div" | "article" | "li" | "section";
 }) {
+  const reducedMotion = useReducedMotion();
   const ref = useRef<HTMLElement>(null);
   const [hovered, setHovered] = useState(false);
 
@@ -45,6 +47,7 @@ export function TiltCard({
   const spotlightBg = useMotionTemplate`radial-gradient(220px circle at ${cx}% ${cy}%, rgba(201, 168, 76, 0.12), transparent 70%)`;
 
   const handleMove = (e: React.MouseEvent) => {
+    if (reducedMotion) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -76,8 +79,8 @@ export function TiltCard({
       onMouseLeave={handleLeave}
       className={className}
       style={{
-        rotateX: rx,
-        rotateY: ry,
+        rotateX: reducedMotion ? 0 : rx,
+        rotateY: reducedMotion ? 0 : ry,
         transformStyle: "preserve-3d",
         perspective: 1200,
       }}

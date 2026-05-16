@@ -21,7 +21,7 @@ export default function SignupPage() {
           </p>
           <div className="mt-8">
             <Link href="/contact" className="btn-primary">
-              Send a brief
+              Send a Brief
             </Link>
           </div>
         </div>

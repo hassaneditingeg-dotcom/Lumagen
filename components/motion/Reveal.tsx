@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
+import { motion, useReducedMotion, type Variants } from "motion/react";
 import type { ReactNode } from "react";
 
 /**
@@ -51,7 +51,13 @@ export function Reveal({
   amount?: number;
   once?: boolean;
 }) {
+  const reducedMotion = useReducedMotion();
   const Tag = motion[as];
+
+  if (reducedMotion) {
+    return <Tag className={className}>{children}</Tag>;
+  }
+
   return (
     <Tag
       className={className}

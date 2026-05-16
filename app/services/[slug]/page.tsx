@@ -8,6 +8,7 @@ import { Section } from "@/components/marketing/Section";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Reveal } from "@/components/motion/Reveal";
 import { TiltCard } from "@/components/motion/TiltCard";
+import { ClaimNote } from "@/components/marketing/TrustPrimitives";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { MANIFEST, type GalleryCategory } from "@/lib/gallery/manifest";
 import { breadcrumbSchema, serviceSchema, SITE } from "@/lib/seo";
@@ -82,7 +83,7 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
             href="/services"
             className="text-sm text-[color:var(--color-text-mid)] transition-colors hover:text-[color:var(--color-text-hi)]"
           >
-            &larr; All services
+            &larr; All Services
           </Link>
           <Reveal className="mt-8 grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:gap-16">
             <div>
@@ -95,10 +96,10 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
                 <MagneticButton href="/contact" className="btn-primary">
-                  Start with this
+                  Start With This
                 </MagneticButton>
                 <Link href="/gallery" className="btn-secondary">
-                  See examples
+                  See Examples
                 </Link>
               </div>
             </div>
@@ -169,7 +170,7 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
                   href="/gallery"
                   className="hidden text-sm text-[color:var(--color-text-mid)] hover:text-[color:var(--color-gold-500)] sm:inline-block"
                 >
-                  See all &rarr;
+                  See All &rarr;
                 </Link>
               </div>
               <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
@@ -212,8 +213,13 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
           <p className="mt-4 max-w-2xl text-[color:var(--color-text-mid)]">
             Every package includes two revision rounds, source files, and
             platform-specific exports. Send a brief and we&rsquo;ll come back
-            with a tailored quote inside 24 hours.
+            with fit notes and a tailored quote path in about 1 business day.
           </p>
+          <ClaimNote className="mt-4 max-w-2xl">
+            Scope cards are starting points. Final recommendations may change
+            after reviewing SKU count, available source photos, and platform
+            requirements.
+          </ClaimNote>
           <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {service.pricing.map((tier, i) => {
               const featured = i === 1;
@@ -247,7 +253,7 @@ export default async function ServiceDetailPage({ params }: { params: Params }) 
                         : "border border-[color:var(--color-border-strong)] text-[color:var(--color-text-hi)] hover:bg-[rgba(201,168,76,0.06)] hover:border-[color:var(--color-border-bright)]"
                     }`}
                   >
-                    Get a quote
+                    Get a Quote
                   </Link>
                 </TiltCard>
               );

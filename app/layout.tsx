@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s · Lumagine A.I",
   },
   description:
-    "AI creative studio for Amazon, TikTok Shop, Shopify, eBay, and Etsy sellers. Listing imagery, A+ Content, storefronts, lifestyle scenes, and social creatives engineered to lift conversion.",
+    "AI creative studio for Amazon, TikTok Shop, Shopify, eBay, and Etsy sellers. Listing imagery, A+ Content, storefronts, lifestyle scenes, and social creatives built to support buyer confidence.",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://lumagine.ai"),
   alternates: { canonical: "/" },
   applicationName: "Lumagine A.I",

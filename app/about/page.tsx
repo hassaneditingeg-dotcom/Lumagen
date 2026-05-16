@@ -16,10 +16,10 @@ export const metadata: Metadata = {
 };
 
 const STATS = [
-  { value: 500, suffix: "+", label: "Curated samples in the library" },
-  { value: 5, suffix: "", label: "Live brand showcases at launch" },
-  { value: 48, suffix: "h", label: "Sample mockup turnaround" },
-  { value: 100, suffix: "%", label: "AI-crafted, no model fees" },
+  { value: 30, suffix: "+", label: "Public gallery samples" },
+  { value: 5, suffix: "", label: "Showcase brands planned" },
+  { value: 48, suffix: "h", label: "Typical sample direction window" },
+  { value: 2, suffix: "", label: "Revision rounds in core packages" },
 ];
 
 const VALUES = [
@@ -145,12 +145,12 @@ export default function AboutPage() {
             Want to see what we&rsquo;d do with your product?
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-[length:var(--text-body-lg)] text-[color:var(--color-text-mid)]">
-            Send us a SKU. We&rsquo;ll come back with a sample mockup within
-            48 hours &mdash; no commitment.
+            Send us a SKU. Qualified briefs get a sample direction path before
+            production &mdash; no commitment.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <MagneticButton href="/contact" className="btn-primary">
-              Request a sample
+              Request a Sample
             </MagneticButton>
             <Link href="/gallery" className="btn-secondary">
               See the gallery

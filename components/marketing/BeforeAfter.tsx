@@ -65,6 +65,7 @@ export function BeforeAfter({
       ref={containerRef}
       className="group relative aspect-[16/10] w-full overflow-hidden rounded-[var(--radius-lg)] border border-[color:var(--color-border)] select-none"
       onPointerDown={(e) => {
+        e.currentTarget.setPointerCapture(e.pointerId);
         draggingRef.current = true;
         updateFromClientX(e.clientX);
       }}
@@ -144,10 +145,12 @@ export function BeforeAfter({
         aria-valuemin={0}
         aria-valuemax={100}
         aria-valuenow={Math.round(position)}
+        aria-orientation="horizontal"
         role="slider"
         onKeyDown={handleKeyDown}
         onPointerDown={(e) => {
           e.stopPropagation();
+          e.currentTarget.setPointerCapture(e.pointerId);
           draggingRef.current = true;
         }}
         className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize rounded-full backdrop-blur-md transition-transform duration-200 hover:scale-110 focus:scale-110"

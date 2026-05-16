@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Reveal } from "@/components/motion/Reveal";
 import { TiltCard } from "@/components/motion/TiltCard";
+import { ClaimNote } from "./TrustPrimitives";
 
 /**
  * PricingPreview — three popular packages, no public dollar amounts.
@@ -94,11 +95,16 @@ export function PricingPreview() {
                   : "border border-[color:var(--color-border-strong)] text-[color:var(--color-text-hi)] hover:bg-[rgba(201,168,76,0.06)] hover:border-[color:var(--color-border-bright)]"
               }`}
             >
-              Get a quote
+              Request Scope
             </Link>
           </TiltCard>
         </Reveal>
       ))}
+      <ClaimNote className="md:col-span-3">
+        Package cards show common starting scopes. Final quote depends on SKU
+        count, required marketplace exports, and how much source photography is
+        already available.
+      </ClaimNote>
     </div>
   );
 }

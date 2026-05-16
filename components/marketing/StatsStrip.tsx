@@ -7,15 +7,15 @@ import { Container } from "./Container";
  * Numbers animate up via <Counter> on intersection.
  */
 const STATS = [
-  { value: 12400, suffix: "+", label: "Images delivered" },
-  { value: 48, suffix: "h", label: "Sample turnaround" },
-  { value: 8, suffix: "", label: "Platforms covered" },
+  { value: 3, suffix: "", label: "Marketplace formats shown" },
+  { value: 48, suffix: "h", label: "Typical sample window" },
+  { value: 2, suffix: "", label: "Revision rounds included" },
 ];
 
 export function StatsStrip() {
   return (
     <Container className="py-10 lg:py-12">
-      <div className="grid grid-cols-3 divide-x divide-[color:var(--color-border-strong)]">
+      <div className="grid grid-cols-3 divide-x divide-[color:var(--color-border-proof)]">
         {STATS.map((s) => (
           <div key={s.label} className="px-4 text-center first:pl-0 last:pr-0">
             <p className="text-[length:var(--text-display-md)] font-[700] tracking-[var(--text-display-md--letter-spacing)] text-[color:var(--color-text-hi)]">
@@ -27,6 +27,11 @@ export function StatsStrip() {
           </div>
         ))}
       </div>
+      <p className="mx-auto mt-5 max-w-2xl text-center text-xs leading-relaxed text-[color:var(--color-text-lo)]">
+        Proof strip reflects the current public gallery and common package
+        terms. Final scope depends on SKU count, platform specs, and approval
+        speed.
+      </p>
     </Container>
   );
 }

@@ -7,6 +7,7 @@ import { Section } from "@/components/marketing/Section";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Reveal } from "@/components/motion/Reveal";
 import { TiltCard } from "@/components/motion/TiltCard";
+import { ClaimNote } from "@/components/marketing/TrustPrimitives";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema, SITE } from "@/lib/seo";
 import { SERVICES } from "@/lib/services";
@@ -14,7 +15,7 @@ import { SERVICES } from "@/lib/services";
 export const metadata: Metadata = {
   title: "Packages",
   description:
-    "Every package across listings, A+ Content, storefronts, lifestyle imagery, social creatives, and packaging. Project-based scoping, two revision rounds included, quote within 24 hours.",
+    "Every package across listings, A+ Content, storefronts, lifestyle imagery, social creatives, and packaging. Project-based scoping, two revision rounds included, and a fit reply in about 1 business day.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -32,15 +33,15 @@ export default function PackagesPage() {
       <PageHero
         eyebrow="Packages"
         title="One scope. One quote. No subscriptions."
-        body="Each project gets its own one-page scope agreement. Every package includes two revision rounds, source files, and platform-specific exports. Send a brief and we'll come back inside 24 hours with a quote tailored to your SKU mix and platforms."
+        body="Each project gets its own one-page scope agreement. Every core package includes two revision rounds, source files, and platform-specific exports. Send a brief and we’ll come back with fit, assumptions, and a quote path tailored to your SKU mix and platforms."
       />
 
       <Section spacing="tight">
         <Container>
           <Reveal>
             <div className="grid gap-3 sm:grid-cols-3">
-              <Highlight label="Sample delivery" value="48h" />
-              <Highlight label="Full set delivery" value="5–9 days" />
+              <Highlight label="Typical sample window" value="48h" />
+              <Highlight label="Common production range" value="5–9 days" />
               <Highlight label="Revisions included" value="2 rounds" />
             </div>
           </Reveal>
@@ -96,12 +97,17 @@ export default function PackagesPage() {
                       href="/contact"
                       className="mt-6 inline-flex h-10 items-center justify-center rounded-full border border-[color:var(--color-border-strong)] text-xs font-[600] uppercase tracking-[0.18em] text-[color:var(--color-text-hi)] transition-colors hover:bg-[rgba(201,168,76,0.06)] hover:border-[color:var(--color-border-bright)]"
                     >
-                      Get a quote
+                      Get a Quote
                     </Link>
                   </TiltCard>
                 </Reveal>
               ))}
             </div>
+            <ClaimNote className="mt-5 max-w-3xl">
+              Package tiers are planning references, not automatic checkout
+              products. Final scope depends on product complexity, available
+              source photography, export specs, and approval speed.
+            </ClaimNote>
           </Container>
 
           {idx < SERVICES.length - 1 && (
@@ -125,10 +131,10 @@ export default function PackagesPage() {
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <MagneticButton href="/contact" className="btn-primary">
-              Get a sample
+              Get a Sample
             </MagneticButton>
             <Link href="/services" className="btn-secondary">
-              Explore services
+              Explore Services
             </Link>
           </div>
         </Reveal>

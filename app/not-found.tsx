@@ -15,10 +15,10 @@ export default function NotFound() {
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <Link href="/" className="btn-primary">
-            Back home
+            Back Home
           </Link>
           <Link href="/gallery" className="btn-secondary">
-            Browse the gallery
+            Browse Gallery
           </Link>
         </div>
       </Container>

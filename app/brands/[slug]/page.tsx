@@ -9,6 +9,7 @@ import { Counter } from "@/components/motion/Counter";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Reveal } from "@/components/motion/Reveal";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { ClaimNote } from "@/components/marketing/TrustPrimitives";
 import { breadcrumbSchema, caseStudySchema, SITE } from "@/lib/seo";
 import { getAllBrandSlugs, getBrand } from "@/lib/brands";
 import { MANIFEST } from "@/lib/gallery/manifest";
@@ -85,10 +86,10 @@ export default async function BrandPage({ params }: { params: Params }) {
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
                 <Link href="/contact" className="btn-primary">
-                  Want this for your brand?
+                  Want This for Your Brand?
                 </Link>
                 <Link href="/gallery" className="btn-secondary">
-                  See more work
+                  See More Work
                 </Link>
               </div>
             </div>
@@ -248,7 +249,7 @@ export default async function BrandPage({ params }: { params: Params }) {
               href="/gallery?tab=lifestyle"
               className="text-sm text-[color:var(--color-text-mid)] transition-colors hover:text-[color:var(--color-gold-500)]"
             >
-              See all lifestyle samples &rarr;
+              See All Lifestyle Samples &rarr;
             </Link>
           </div>
         </Container>
@@ -316,11 +317,17 @@ export default async function BrandPage({ params }: { params: Params }) {
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-[length:var(--text-body-lg)] text-[color:var(--color-text-mid)]">
             Tell us what you sell, and we&rsquo;ll come back with a creative
-            direction and a sample mockup inside 48 hours.
+            direction path and a sample mockup in the typical 48-hour sample
+            window for qualified briefs.
           </p>
+          <ClaimNote className="mx-auto mt-4 max-w-2xl">
+            Case-study visuals show the current public showcase library. Your
+            production scope will be based on your own SKU photos, category
+            constraints, and marketplace requirements.
+          </ClaimNote>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <MagneticButton href="/contact" className="btn-primary">
-              Start a brief
+              Start a Brief
             </MagneticButton>
           </div>
         </Reveal>

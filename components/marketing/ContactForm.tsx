@@ -1,6 +1,14 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import {
+  cloneElement,
+  isValidElement,
+  useEffect,
+  useRef,
+  useState,
+  useTransition,
+  type ReactElement,
+} from "react";
 import { submitInquiry, type InquiryResult } from "@/lib/inquiries";
 
 type FieldErrors = Record<string, string[] | undefined>;
@@ -35,8 +43,49 @@ const BUDGETS = [
 export function ContactForm() {
   const [pending, startTransition] = useTransition();
   const [result, setResult] = useState<InquiryResult | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const fieldErrors: FieldErrors =
     result && !result.ok ? result.fieldErrors ?? {} : {};
+
+  useEffect(() => {
+    if (!result || result.ok) return;
+    const firstInvalid = formRef.current?.querySelector<HTMLElement>(
+      "[aria-invalid='true']",
+    );
+    firstInvalid?.focus();
+  }, [result]);
+
+  const handleClientSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const errors: Record<string, string[]> = {};
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const platform = String(formData.get("platform") ?? "");
+    const service = String(formData.get("service") ?? "");
+    const budget = String(formData.get("budget") ?? "");
+    const message = String(formData.get("message") ?? "").trim();
+
+    if (name.length < 2) errors.name = ["Please share your name."];
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = ["Please share a working email."];
+    }
+    if (!platform) errors.platform = ["Please select your primary platform."];
+    if (!service) errors.service = ["Please select what you need."];
+    if (!budget) errors.budget = ["Please select a project budget range."];
+    if (message.length < 10) {
+      errors.message = ["Tell us a bit more about your products."];
+    }
+
+    if (Object.keys(errors).length > 0) {
+      event.preventDefault();
+      setResult({
+        ok: false,
+        error: "Please correct the highlighted fields.",
+        fieldErrors: errors,
+      });
+    }
+  };
 
   if (result?.ok) {
     return (
@@ -46,8 +95,8 @@ export function ContactForm() {
           We&rsquo;ve got it.
         </h2>
         <p className="mx-auto mt-4 max-w-md text-[color:var(--color-text-mid)]">
-          A short reply with a sample direction lands in your inbox inside 24
-          hours. If it&rsquo;s urgent, just reply to that email with the word
+          A short reply with a sample direction lands in your inbox inside 1
+          business day. If it&rsquo;s urgent, reply to that email with the word
           &ldquo;urgent&rdquo;.
         </p>
         <button
@@ -55,7 +104,7 @@ export function ContactForm() {
           className="btn-secondary mt-8"
           onClick={() => setResult(null)}
         >
-          Send another
+          Send Another
         </button>
       </div>
     );
@@ -63,9 +112,11 @@ export function ContactForm() {
 
   return (
     <form
+      ref={formRef}
       action={(formData) =>
         startTransition(async () => setResult(await submitInquiry(formData)))
       }
+      onSubmit={handleClientSubmit}
       className="surface-card p-8 lg:p-10"
       noValidate
     >
@@ -77,7 +128,7 @@ export function ContactForm() {
             required
             autoComplete="name"
             className="form-input"
-            placeholder="Hassan"
+            placeholder="Example: Hassan…"
           />
         </Field>
         <Field label="Email" name="email" error={fieldErrors.email}>
@@ -86,8 +137,9 @@ export function ContactForm() {
             name="email"
             required
             autoComplete="email"
+            spellCheck={false}
             className="form-input"
-            placeholder="you@brand.com"
+            placeholder="Example: you@brand.com…"
           />
         </Field>
         <Field
@@ -101,7 +153,7 @@ export function ContactForm() {
             name="company"
             autoComplete="organization"
             className="form-input"
-            placeholder="Terra Lotus"
+            placeholder="Example: Terra Lotus…"
           />
         </Field>
         <Field
@@ -109,21 +161,21 @@ export function ContactForm() {
           name="platform"
           error={fieldErrors.platform}
         >
-          <Select name="platform" options={PLATFORMS} placeholder="Select platform" />
+          <Select name="platform" options={PLATFORMS} placeholder="Select platform…" />
         </Field>
         <Field
           label="What you're looking for"
           name="service"
           error={fieldErrors.service}
         >
-          <Select name="service" options={SERVICES} placeholder="Select service" />
+          <Select name="service" options={SERVICES} placeholder="Select service…" />
         </Field>
         <Field
           label="Project budget"
           name="budget"
           error={fieldErrors.budget}
         >
-          <Select name="budget" options={BUDGETS} placeholder="Select range" />
+          <Select name="budget" options={BUDGETS} placeholder="Select range…" />
         </Field>
         <Field
           label="Tell us about your products"
@@ -136,13 +188,15 @@ export function ContactForm() {
             required
             rows={5}
             className="form-input resize-y"
-            placeholder="What you sell, where, who buys it, and what you've struggled with so far."
+            placeholder="Example: What you sell, where, who buys it, and what has been hard to show visually…"
           />
         </Field>
       </div>
 
       {result && !result.ok && (
         <p
+          role="status"
+          aria-live="polite"
           className="mt-6 rounded-[var(--radius-sm)] px-4 py-3 text-sm"
           style={{
             background: "rgba(239, 68, 68, 0.08)",
@@ -155,11 +209,16 @@ export function ContactForm() {
       )}
 
       <div className="mt-8 flex flex-wrap items-center gap-4">
-        <button type="submit" className="btn-primary" disabled={pending}>
-          {pending ? "Sending…" : "Send brief"}
+        <button
+          type="submit"
+          className="btn-primary disabled:cursor-wait disabled:opacity-70"
+          disabled={pending}
+          aria-live="polite"
+        >
+          {pending ? "Sending…" : "Send Brief"}
         </button>
         <span className="text-xs text-[color:var(--color-text-lo)]">
-          We reply within 24 hours, Cairo time.
+          Typical first reply: 1 business day, Cairo time.
         </span>
       </div>
     </form>
@@ -168,6 +227,7 @@ export function ContactForm() {
 
 function Field({
   label,
+  name,
   children,
   error,
   optional,
@@ -180,25 +240,43 @@ function Field({
   optional?: boolean;
   className?: string;
 }) {
+  const fieldId = `field-${name}`;
+  const errorId = `${fieldId}-error`;
+  const describedBy = error?.[0] ? errorId : undefined;
+  const control = isValidElement(children)
+    ? cloneElement(children as ReactElement<Record<string, unknown>>, {
+        id: fieldId,
+        "aria-invalid": error?.[0] ? "true" : undefined,
+        "aria-describedby": describedBy,
+      })
+    : children;
+
   return (
-    <label className={`block ${className ?? ""}`}>
+    <div className={`block ${className ?? ""}`}>
       <span className="flex items-baseline justify-between">
-        <span className="text-xs font-[600] uppercase tracking-[0.18em] text-[color:var(--color-text-mid)]">
+        <label
+          htmlFor={fieldId}
+          className="text-xs font-[600] uppercase tracking-[0.18em] text-[color:var(--color-text-mid)]"
+        >
           {label}
-        </span>
+        </label>
         {optional && (
           <span className="text-[10px] uppercase tracking-[0.18em] text-[color:var(--color-text-lo)]">
             Optional
           </span>
         )}
       </span>
-      <div className="mt-2">{children}</div>
+      <div className="mt-2">{control}</div>
       {error?.[0] && (
-        <p className="mt-2 text-xs" style={{ color: "var(--color-error)" }}>
+        <p
+          id={errorId}
+          className="mt-2 text-xs"
+          style={{ color: "var(--color-error)" }}
+        >
           {error[0]}
         </p>
       )}
-    </label>
+    </div>
   );
 }
 

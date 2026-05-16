@@ -33,10 +33,10 @@ export default function GlobalError({
         )}
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <button type="button" onClick={reset} className="btn-primary">
-            Try again
+            Try Again
           </button>
           <Link href="/" className="btn-secondary">
-            Back home
+            Back Home
           </Link>
         </div>
       </Container>

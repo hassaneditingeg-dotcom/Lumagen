@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useMotionValue, useSpring, type HTMLMotionProps } from "motion/react";
+import { motion, useMotionValue, useReducedMotion, useSpring, type HTMLMotionProps } from "motion/react";
 import Link from "next/link";
 import { useRef } from "react";
 
@@ -33,11 +33,13 @@ export function MagneticButton({
 } & Omit<HTMLMotionProps<"button">, "onAnimationStart" | "onDragStart" | "onDragEnd" | "onDrag">) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+  const reducedMotion = useReducedMotion();
   const springX = useSpring(x, { stiffness: 180, damping: 18, mass: 0.6 });
   const springY = useSpring(y, { stiffness: 180, damping: 18, mass: 0.6 });
   const wrapperRef = useRef<HTMLSpanElement>(null);
 
   const handleMove = (e: React.MouseEvent) => {
+    if (reducedMotion) return;
     const el = wrapperRef.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -54,7 +56,7 @@ export function MagneticButton({
 
   const inner = (
     <motion.span
-      style={{ x: springX, y: springY, display: "inline-flex" }}
+      style={{ x: reducedMotion ? 0 : springX, y: reducedMotion ? 0 : springY, display: "inline-flex" }}
       {...rest}
     >
       {children}

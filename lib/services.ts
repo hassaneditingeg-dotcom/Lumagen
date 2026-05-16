@@ -28,17 +28,17 @@ export const SERVICES: Service[] = [
       {
         step: "01",
         title: "Brief & references",
-        body: "Send your SKU, audience, references, and brand assets. We come back with a creative direction inside 24 hours.",
+        body: "Send your SKU, audience, references, and brand assets. We come back with fit notes and a direction path in about 1 business day.",
       },
       {
         step: "02",
-        title: "Sample mockup",
-        body: "We deliver a single hero image rendered for your actual product so you can see our take before committing.",
+        title: "Sample direction",
+        body: "For qualified briefs, we render a first hero direction for your actual product so you can judge the approach before committing.",
       },
       {
         step: "03",
         title: "Full set",
-        body: "Approve and we ship the complete listing carousel within 5 working days. Two revision rounds included.",
+        body: "Approve and we ship the complete listing carousel in the agreed production window. Two revision rounds included.",
       },
       {
         step: "04",
@@ -70,7 +70,7 @@ export const SERVICES: Service[] = [
     title: "Amazon A+ Content modules",
     oneLiner:
       "The brand-story panels beneath your detail page that turn browsers into buyers.",
-    body: "A+ Content is the most under-optimized real estate on Amazon. We design module sets that lift conversion by walking the shopper through your story, your differentiation, and your proof — visually, in seconds, on mobile.",
+    body: "A+ Content is often underused real estate on Amazon. We design module sets that support conversion by walking the shopper through your story, differentiation, and proof — visually, in seconds, on mobile.",
     deliverables: [
       "5–7 A+ modules (header banner, comparison chart, lifestyle, FAQs)",
       "Mobile-optimized layouts (≥70% of Amazon traffic)",
@@ -92,7 +92,7 @@ export const SERVICES: Service[] = [
       {
         step: "03",
         title: "Design & ship",
-        body: "Full A+ set delivered in 7 working days, with Amazon-ready exports and a Loom walkthrough.",
+        body: "Full A+ set delivered in the agreed production window, with Amazon-ready exports and a Loom walkthrough.",
       },
     ],
     pricing: [
@@ -113,7 +113,7 @@ export const SERVICES: Service[] = [
     tag: "Storefronts",
     title: "Shopify & Amazon storefronts",
     oneLiner:
-      "Branded multi-page storefronts with collection tiles and cross-sell rails that lift AOV.",
+      "Branded multi-page storefronts with collection tiles and cross-sell rails built to support larger orders.",
     body: "Your storefront is the only listing real estate that lets you tell your full brand story. We design multi-page Amazon Brand Storefronts and Shopify themes that turn one-product purchases into category-discovery sessions.",
     deliverables: [
       "Home page with hero, collection rails, and brand story panel",

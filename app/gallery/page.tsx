@@ -120,10 +120,10 @@ export default async function GalleryPage({
               </h2>
               <div className="mt-8 flex flex-wrap justify-center gap-3">
                 <MagneticButton href="/contact" className="btn-primary">
-                  Request a sample
+                  Request a Sample
                 </MagneticButton>
                 <Link href="/services" className="btn-secondary">
-                  Browse services
+                  Browse Services
                 </Link>
               </div>
             </div>

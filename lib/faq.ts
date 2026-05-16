@@ -7,7 +7,7 @@ export const FAQ_DATA: { question: string; answer: string }[] = [
   {
     question: "How fast is the turnaround?",
     answer:
-      "Sample mockup within 48 hours of receiving your brief. Full sets (listing carousel, A+ Content, or social pack) ship in 5–9 working days, including two revision rounds.",
+      "Qualified briefs usually receive a sample direction within 48 hours. Focused full sets (listing carousel, A+ Content, or social pack) commonly land in 5–9 working days after direction approval, including two revision rounds.",
   },
   {
     question: "Which platforms do you support?",
@@ -32,7 +32,7 @@ export const FAQ_DATA: { question: string; answer: string }[] = [
   {
     question: "How does pricing work?",
     answer:
-      "Project-based, not subscription-based. Every brief gets a tailored quote within 24 hours, scoped to your SKU mix and platforms. Each package includes two revision rounds, source files, and platform-specific exports. Volume discounts kick in at 10+ SKU lines.",
+      "Project-based, not subscription-based. Every brief gets a tailored quote path after fit review, scoped to your SKU mix and platforms. Each core package includes two revision rounds, source files, and platform-specific exports. Volume discounts start at 10+ SKU lines.",
   },
   {
     question: "Can you match my existing brand guidelines?",

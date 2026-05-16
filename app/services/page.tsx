@@ -69,7 +69,7 @@ export default function ServicesIndexPage() {
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <MagneticButton href="/contact" className="btn-primary">
-              Tell us about your brand
+              Tell Us About Your Brand
             </MagneticButton>
           </div>
         </Reveal>

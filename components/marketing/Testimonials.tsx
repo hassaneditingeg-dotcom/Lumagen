@@ -9,18 +9,20 @@ import { TiltCard } from "@/components/motion/TiltCard";
 const QUOTES = [
   {
     quote:
-      "Cut our listing photography budget by 70% and shipped the full carousel in five days. The conversion lift on our top SKU was 1.8× in the first week.",
+      "The listing system made the product feel consistent across Amazon and Shopify instead of looking like separate photoshoots.",
     name: "Sarah Patel",
     role: "Founder, Terra Lotus",
     platform: "Amazon · Shopify",
+    context: "Showcase brand example",
     initial: "SP",
   },
   {
     quote:
-      "We used to wait six weeks for a refresh. With Lumagine A.I we now turn around a full A+ Content set in nine days — including two revision rounds.",
+      "The A+ modules gave us a cleaner way to explain the product story without rebuilding the entire storefront first.",
     name: "Marcus Wei",
     role: "Brand Director, North Pine",
     platform: "Amazon · TikTok Shop",
+    context: "Representative package use case",
     initial: "MW",
   },
   {
@@ -29,6 +31,7 @@ const QUOTES = [
     name: "Layla Hassan",
     role: "Co-founder, Maison Cyra",
     platform: "Shopify · Etsy",
+    context: "Brand consistency use case",
     initial: "LH",
   },
 ];
@@ -65,7 +68,7 @@ export function Testimonials() {
               </div>
             </div>
             <p className="mt-4 text-[10px] font-[600] uppercase tracking-[0.18em] text-[color:var(--color-text-faint)]">
-              {q.platform}
+              {q.context} · {q.platform}
             </p>
           </TiltCard>
         </Reveal>

@@ -4,14 +4,13 @@ import { BrandStrip } from "@/components/marketing/BrandStrip";
 import { Container } from "@/components/marketing/Container";
 import { Divider } from "@/components/marketing/Divider";
 import { FAQ } from "@/components/marketing/FAQ";
-import { FloatingOrbs } from "@/components/marketing/FloatingOrbs";
 import { Hero3D } from "@/components/marketing/Hero3D";
 import { HowItWorks } from "@/components/marketing/HowItWorks";
 import { PlatformLogos } from "@/components/marketing/PlatformLogos";
 import { PricingPreview } from "@/components/marketing/PricingPreview";
 import { StatsStrip } from "@/components/marketing/StatsStrip";
 import { Testimonials } from "@/components/marketing/Testimonials";
-import { MagneticButton } from "@/components/motion/MagneticButton";
+import { CTARow, ClaimNote, ProofMetric } from "@/components/marketing/TrustPrimitives";
 import { Reveal } from "@/components/motion/Reveal";
 import { TiltCard } from "@/components/motion/TiltCard";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -32,36 +31,49 @@ export default function HomePage() {
       <JsonLd id="ld-faq" data={faqPageSchema(FAQ_DATA)} />
 
       {/* ===========================================================
-          HERO  (with subtle floating orbs in background)
+          HERO
           =========================================================== */}
       <section className="relative overflow-hidden px-6 pt-28 pb-12 sm:pt-32 lg:pt-40 lg:pb-16">
-        <FloatingOrbs />
         <div className="relative z-10 mx-auto max-w-7xl">
           <div
             className="grid items-center gap-16 lg:grid-cols-[1.05fr_1fr] lg:gap-20"
             style={{ containerType: "inline-size" }}
           >
             <Reveal>
-              <span className="status-pill">Available for new projects · May 2026</span>
+              <span className="status-pill">Accepting new ecommerce briefs · May 2026</span>
               <span className="eyebrow mt-7 block">Zero to Hero Studio</span>
               <h1 className="mt-6 text-[length:var(--text-display-2xl)] font-[700] leading-[var(--text-display-2xl--line-height)] tracking-[var(--text-display-2xl--letter-spacing)]">
-                One image.
-                <br />
-                Infinite possibilities.
+                Product visuals that make shoppers trust the click.
               </h1>
               <p className="mt-7 max-w-xl text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] text-[color:var(--color-text-mid)]">
-                Transform your product photography with AI-powered precision.
-                Professional visuals for Amazon, eBay, Etsy, and social
-                platforms &mdash; engineered for the shopper&rsquo;s
-                two-second scan.
+                Lumagine A.I turns raw SKU photos into marketplace-ready
+                listing carousels, lifestyle scenes, and storefront assets for
+                Amazon, TikTok Shop, Shopify, eBay, and Etsy.
               </p>
-              <div className="mt-10 flex flex-wrap gap-3">
-                <MagneticButton href="/contact" className="btn-primary">
-                  Start a project
-                </MagneticButton>
-                <Link href="/gallery" className="btn-secondary">
-                  See the work
-                </Link>
+              <div className="mt-8 grid max-w-xl gap-3 sm:grid-cols-3">
+                <ProofMetric
+                  value="48h"
+                  label="Sample Direction"
+                  note="Typical first visual sample for qualified SKU briefs."
+                />
+                <ProofMetric
+                  value="5–9d"
+                  label="Full Set"
+                  note="Common production window after the direction is approved."
+                />
+                <ProofMetric
+                  value="2x"
+                  label="Revisions"
+                  note="Included on fixed-scope packages before final export."
+                />
+              </div>
+              <div className="mt-10">
+                <CTARow
+                  primaryLabel="Request a Sample"
+                  secondaryHref="/gallery"
+                  secondaryLabel="See the Work"
+                  note="No subscription. One scoped project at a time."
+                />
               </div>
             </Reveal>
 
@@ -95,7 +107,8 @@ export default function HomePage() {
               </h2>
               <p className="mt-5 text-[color:var(--color-text-mid)]">
                 The whole workflow from your inbox to launch-ready imagery —
-                no agency back-and-forth, no studio bookings, no surprises.
+                fewer agency handoffs, no studio booking dependency, and a
+                clear scope before production starts.
               </p>
             </div>
           </Reveal>
@@ -123,14 +136,19 @@ export default function HomePage() {
                 </div>
                 <p className="max-w-xl text-[color:var(--color-text-mid)] lg:text-right">
                   Drag the slider to compare a raw product photo with the
-                  finished AI-crafted scene. Same SKU, same brand &mdash;
-                  one shipped a week later and lifted CTR by 1.8&times;.
+                  finished AI-crafted scene. Same SKU, same brand, rebuilt for
+                  a clearer marketplace first impression.
                 </p>
               </div>
             </Reveal>
 
             <Reveal delay={0.15}>
               <BeforeAfter before={beforeEntry} after={afterEntry} />
+              <ClaimNote className="mt-4 max-w-3xl">
+                Example transformation from the Terra Lotus showcase. Reported
+                performance varies by category, traffic source, and offer
+                quality; visual clarity is one part of the conversion system.
+              </ClaimNote>
             </Reveal>
           </Container>
         </section>
@@ -157,7 +175,7 @@ export default function HomePage() {
                 href="/services"
                 className="hidden text-sm text-[color:var(--color-text-mid)] hover:text-[color:var(--color-gold-500)] sm:inline-block"
               >
-                All services &rarr;
+                All Services &rarr;
               </Link>
             </div>
           </Reveal>
@@ -209,7 +227,7 @@ export default function HomePage() {
                 href={`/brands/${BRANDS[0].slug}`}
                 className="btn-secondary"
               >
-                Read the case study
+                Read the Case Study
               </Link>
             </div>
           </Reveal>
@@ -273,7 +291,6 @@ export default function HomePage() {
           TESTIMONIALS
           =========================================================== */}
       <section className="relative overflow-hidden px-6 py-24 lg:py-32">
-        <FloatingOrbs />
         <Container className="relative z-10">
           <Reveal>
             <div className="mb-12">
@@ -284,6 +301,11 @@ export default function HomePage() {
             </div>
           </Reveal>
           <Testimonials />
+          <ClaimNote className="mx-auto mt-6 max-w-3xl text-center">
+            Testimonials are representative client-style outcomes from launch
+            showcases and should be read as directional examples, not universal
+            performance guarantees.
+          </ClaimNote>
         </Container>
       </section>
 
@@ -321,20 +343,21 @@ export default function HomePage() {
         <Reveal className="mx-auto max-w-4xl text-center">
           <span className="eyebrow">Ready when you are</span>
           <h2 className="mt-5 text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
-            Send us your product. Get back a sample mockup within 48 hours.
+            Send us your product. Get back a qualified sample direction.
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-[length:var(--text-body-lg)] text-[color:var(--color-text-mid)]">
             No commitment, no template &mdash; a single hero image rendered
             for your actual SKU so you can see what we&rsquo;d deliver
             before signing anything.
           </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <MagneticButton href="/contact" className="btn-primary">
-              Request a sample
-            </MagneticButton>
-            <Link href="/gallery" className="btn-secondary">
-              Browse the gallery
-            </Link>
+          <div className="mt-10">
+            <CTARow
+              primaryLabel="Request a Sample"
+              secondaryHref="/gallery"
+              secondaryLabel="Browse the Gallery"
+              note="Qualified briefs receive a scoped recommendation before production."
+              centered
+            />
           </div>
         </Reveal>
       </section>
@@ -356,7 +379,7 @@ const SERVICES = [
   {
     tag: "Storefronts",
     title: "Shopify & Amazon storefronts",
-    body: "Branded multi-page storefronts with collection tiles, hero stories, and cross-sell rails that lift AOV.",
+    body: "Branded multi-page storefronts with collection tiles, hero stories, and cross-sell rails that make discovery easier.",
   },
   {
     tag: "Lifestyle",

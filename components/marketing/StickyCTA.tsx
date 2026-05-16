@@ -52,12 +52,12 @@ export function StickyCTA({ hideOn = [] }: { hideOn?: string[] }) {
                 boxShadow: "0 0 8px var(--color-gold-500)",
               }}
             />
-            <span>Start a project</span>
+            <span>Start a Project</span>
             <span
               className="text-xs"
               style={{ color: "var(--color-text-lo)" }}
             >
-              · 48h sample
+              · Typical 48h sample
             </span>
             <svg
               width="14"

@@ -7,7 +7,7 @@ import { Reveal } from "@/components/motion/Reveal";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Send us a brief — we'll come back with a sample mockup of your actual product within 48 hours.",
+    "Send us a brief — qualified SKU projects receive a sample direction and scoped recommendation.",
 };
 
 export default function ContactPage() {
@@ -21,9 +21,9 @@ export default function ContactPage() {
               Send us your product.
             </h1>
             <p className="mt-7 max-w-2xl text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] text-[color:var(--color-text-mid)]">
-              We&rsquo;ll come back inside 24 hours with a creative direction and
-              a sample hero rendered for your actual SKU &mdash; before you sign
-              anything.
+              We&rsquo;ll come back with fit, scope, and a sample direction path
+              for your actual SKU before you sign anything. Typical first
+              reply: 1 business day.
             </p>
           </Reveal>
         </Container>
@@ -41,7 +41,7 @@ export default function ContactPage() {
                 value="hello@lumagine.ai"
                 href="mailto:hello@lumagine.ai"
               />
-              <Detail label="Reply time" value="Within 24 hours" />
+              <Detail label="Reply time" value="Usually 1 business day" />
               <Detail label="Based in" value="Cairo, Egypt" />
             </div>
           </Reveal>

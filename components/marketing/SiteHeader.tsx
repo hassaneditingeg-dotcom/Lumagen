@@ -28,7 +28,7 @@ export function SiteHeader() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300",
         scrolled
           ? "backdrop-blur-md"
           : "bg-transparent"
@@ -68,6 +68,7 @@ export function SiteHeader() {
               <MagneticLink
                 key={item.href}
                 href={item.href}
+                aria-current={active ? "page" : undefined}
                 className={cn(
                   "text-sm transition-colors",
                   active
@@ -84,12 +85,12 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <Link
             href="/contact"
-            className="hidden h-10 items-center rounded-full bg-[color:var(--color-gold-500)] px-5 text-sm font-semibold text-[color:var(--color-bg-0)] transition-transform hover:-translate-y-0.5 sm:inline-flex"
+            className="hidden h-10 items-center rounded-full bg-[color:var(--color-gold-500)] px-5 text-sm font-semibold text-[color:var(--color-bg-0)] transition-[background-color,box-shadow,transform] hover:-translate-y-0.5 hover:bg-[color:var(--color-gold-400)] sm:inline-flex"
             style={{
-              boxShadow: "var(--shadow-gold), inset 0 1px 0 rgba(255,255,255,0.3)",
+              boxShadow: "var(--shadow-gold-sm), inset 0 1px 0 rgba(255,255,255,0.3)",
             }}
           >
-            Start a project
+            Start a Project
           </Link>
           <button
             type="button"
@@ -97,6 +98,7 @@ export function SiteHeader() {
             className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--color-border)] md:hidden"
             aria-label="Toggle navigation"
             aria-expanded={open}
+            aria-controls="mobile-primary-navigation"
           >
             <BurgerIcon open={open} />
           </button>
@@ -106,14 +108,15 @@ export function SiteHeader() {
       {/* Mobile drawer */}
       {open && (
         <div
-          className="border-t border-[color:var(--color-border)] backdrop-blur-md md:hidden"
+          className="max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-[color:var(--color-border)] backdrop-blur-md md:hidden"
           style={{ backgroundColor: "rgba(6, 5, 4, 0.95)" }}
         >
-          <nav className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-6" aria-label="Mobile primary">
+          <nav id="mobile-primary-navigation" className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-6" aria-label="Mobile primary">
             {NAV.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
+                aria-current={pathname?.startsWith(item.href) ? "page" : undefined}
                 onClick={() => setOpen(false)}
                 className="rounded-md py-2 text-base text-[color:var(--color-text-mid)] hover:text-[color:var(--color-text-hi)]"
               >
@@ -125,7 +128,7 @@ export function SiteHeader() {
               onClick={() => setOpen(false)}
               className="mt-3 inline-flex h-11 items-center justify-center rounded-full bg-[color:var(--color-gold-500)] px-5 text-sm font-semibold text-[color:var(--color-bg-0)]"
             >
-              Start a project
+              Start a Project
             </Link>
           </nav>
         </div>
@@ -165,11 +168,11 @@ function BurgerIcon({ open }: { open: boolean }) {
         y2={open ? "7" : "2"}
         stroke="currentColor"
         strokeWidth="1.5"
-        strokeLinecap="round"
+                strokeLinecap="round"
         style={{
           transform: open ? "rotate(45deg)" : "none",
           transformOrigin: "center",
-          transition: "all 200ms",
+          transition: "transform 200ms ease, y 200ms ease",
         }}
       />
       <line
@@ -182,7 +185,7 @@ function BurgerIcon({ open }: { open: boolean }) {
         strokeLinecap="round"
         style={{
           opacity: open ? 0 : 1,
-          transition: "all 200ms",
+          transition: "opacity 200ms ease",
         }}
       />
       <line
@@ -196,7 +199,7 @@ function BurgerIcon({ open }: { open: boolean }) {
         style={{
           transform: open ? "rotate(-45deg)" : "none",
           transformOrigin: "center",
-          transition: "all 200ms",
+          transition: "transform 200ms ease, y 200ms ease",
         }}
       />
     </svg>
