@@ -7,6 +7,7 @@ import { FAQ } from "@/components/marketing/FAQ";
 import { Hero3D } from "@/components/marketing/Hero3D";
 import { HowItWorks } from "@/components/marketing/HowItWorks";
 import { PlatformLogos } from "@/components/marketing/PlatformLogos";
+import { PlatformMarquee } from "@/components/marketing/PlatformMarquee";
 import { PricingPreview } from "@/components/marketing/PricingPreview";
 import { StatsStrip } from "@/components/marketing/StatsStrip";
 import { Testimonials } from "@/components/marketing/Testimonials";
@@ -87,6 +88,7 @@ export default function HomePage() {
       {/* ===========================================================
           TRUST STRIP — platform logos + stats
           =========================================================== */}
+      <PlatformMarquee />
       <PlatformLogos />
       <StatsStrip />
 
