@@ -54,9 +54,11 @@ export function Reveal({
   const reducedMotion = useReducedMotion();
   const Tag = motion[as];
 
-  if (reducedMotion) {
-    return <Tag className={className}>{children}</Tag>;
-  }
+  // Always render motion wrappers to keep SSR/client DOM identical.
+  // When reduced motion is active, collapse animations to instant.
+  const resolvedItem: Variants = reducedMotion
+    ? { hidden: { opacity: 1, y: 0, filter: "none" }, visible: { opacity: 1, y: 0, filter: "none" } }
+    : itemVariants;
 
   return (
     <Tag
@@ -67,7 +69,7 @@ export function Reveal({
           ...containerVariants.visible,
           transition: {
             ...(containerVariants.visible as { transition: object }).transition,
-            delayChildren: delay,
+            delayChildren: reducedMotion ? 0 : delay,
           },
         },
       }}
@@ -77,12 +79,12 @@ export function Reveal({
     >
       {Array.isArray(children) ? (
         children.map((child, i) => (
-          <motion.div key={i} variants={itemVariants}>
+          <motion.div key={i} variants={resolvedItem}>
             {child}
           </motion.div>
         ))
       ) : (
-        <motion.div variants={itemVariants}>{children}</motion.div>
+        <motion.div variants={resolvedItem}>{children}</motion.div>
       )}
     </Tag>
   );

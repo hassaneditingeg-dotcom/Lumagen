@@ -3,6 +3,7 @@ import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
 import { StickyCTA } from "@/components/marketing/StickyCTA";
+import { CursorGlow } from "@/components/motion/CursorGlow";
 import { WebVitals } from "@/components/perf/WebVitals";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { organizationSchema, websiteSchema } from "@/lib/seo";
@@ -89,6 +90,7 @@ export default function RootLayout({
         </div>
         <SiteFooter />
         <StickyCTA hideOn={["/contact"]} />
+        <CursorGlow />
       </body>
     </html>
   );
