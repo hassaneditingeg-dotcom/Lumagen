@@ -41,12 +41,13 @@ export default function HomePage() {
             style={{ containerType: "inline-size" }}
           >
             <Reveal>
-              <span className="status-pill">Accepting new ecommerce briefs · May 2026</span>
-              <span className="eyebrow mt-7 block">Zero to Hero Studio</span>
-              <h1 className="mt-6 text-[length:var(--text-display-2xl)] font-[700] leading-[var(--text-display-2xl--line-height)] tracking-[var(--text-display-2xl--letter-spacing)]">
-                Product visuals that make shoppers trust the click.
+              <span className="status-pill hero-enter hero-enter-1">Accepting new ecommerce briefs · May 2026</span>
+              <span className="eyebrow mt-7 block hero-enter hero-enter-2">Zero to Hero Studio</span>
+              <h1 className="mt-6 text-[length:var(--text-display-2xl)] font-[700] leading-[var(--text-display-2xl--line-height)] tracking-[var(--text-display-2xl--letter-spacing)] hero-enter hero-enter-3">
+                Product visuals that make shoppers{" "}
+                <span className="gradient-text">trust the click.</span>
               </h1>
-              <p className="mt-7 max-w-xl text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] text-[color:var(--color-text-mid)]">
+              <p className="mt-7 max-w-xl text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] text-[color:var(--color-text-mid)] hero-enter hero-enter-4">
                 Lumagine A.I turns raw SKU photos into marketplace-ready
                 listing carousels, lifestyle scenes, and storefront assets for
                 Amazon, TikTok Shop, Shopify, eBay, and Etsy.

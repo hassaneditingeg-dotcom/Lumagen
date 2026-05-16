@@ -70,7 +70,7 @@ export function SiteHeader() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "text-sm transition-colors",
+                  "nav-link text-sm transition-colors",
                   active
                     ? "text-[color:var(--color-text-hi)]"
                     : "text-[color:var(--color-text-mid)] hover:text-[color:var(--color-text-hi)]"
