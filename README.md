@@ -1,4 +1,4 @@
-# Lumagine A.I
+# Lumagen A.I
 
 > **Zero to Hero Studio** — AI-crafted listing imagery, storefronts, A+ content, and social creatives for Amazon, TikTok Shop, Shopify, eBay, and Etsy sellers. Made in Cairo.
 
@@ -27,7 +27,7 @@ npm install
 npm run dev                     # http://localhost:3000
 ```
 
-The site is fully functional **without** Supabase for development. The contact form falls back to logging inquiries to `/tmp/lumagine-inquiries.json` until env vars are set.
+The site is fully functional **without** Supabase for development. The contact form falls back to logging inquiries to `/tmp/lumagen-inquiries.json` until env vars are set.
 
 ### Scripts
 
@@ -126,4 +126,4 @@ All colors verified WCAG AA on `--color-bg-0`:
 
 ## License
 
-Proprietary — Lumagine A.I © 2026
+Proprietary — Lumagen A.I © 2026

@@ -14,8 +14,8 @@
  *   - CreativeWork        — brand case study (proof piece)
  */
 
-export const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lumagine.ai";
-export const ORG_NAME = "Lumagine A.I";
+export const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lumagen.ai";
+export const ORG_NAME = "Lumagen A.I";
 export const ORG_DESCRIPTION =
   "AI creative studio for Amazon, TikTok Shop, Shopify, eBay, and Etsy sellers. Listing imagery, A+ Content, storefronts, lifestyle scenes, and social-first creatives.";
 
@@ -25,7 +25,7 @@ export function organizationSchema() {
     "@type": "Organization",
     "@id": `${SITE}/#organization`,
     name: ORG_NAME,
-    alternateName: "Lumagine",
+    alternateName: "Lumagen",
     description: ORG_DESCRIPTION,
     url: SITE,
     logo: `${SITE}/og`,
@@ -40,7 +40,7 @@ export function organizationSchema() {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",
-      email: "hello@lumagine.ai",
+      email: "hello@lumagen.ai",
       areaServed: ["US", "CA", "GB", "AU", "EG"],
       availableLanguage: ["en"],
     },

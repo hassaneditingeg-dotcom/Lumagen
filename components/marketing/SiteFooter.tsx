@@ -25,13 +25,6 @@ const COLUMNS = [
     label: "Account",
     links: [
       { href: "/login", label: "Sign in" },
-      { href: "/signup", label: "Create account" },
-      { href: "/dashboard", label: "Dashboard" },
-    ],
-  },
-  {
-    label: "Legal",
-    links: [
       { href: "/privacy", label: "Privacy" },
       { href: "/terms", label: "Terms" },
     ],
@@ -45,10 +38,10 @@ export function SiteFooter() {
       style={{ backgroundColor: "rgba(6, 5, 4, 0.65)" }}
     >
       <div className="mx-auto max-w-7xl px-6 py-16 lg:py-20">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1fr]">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr]">
           <div>
             <p className="text-2xl font-[700] tracking-[-0.02em] text-[color:var(--color-text-hi)]">
-              Lumagine
+              Lumagen
               <span
                 className="ml-2 align-[0.15em] text-[0.55em] font-[500] uppercase tracking-[0.22em]"
                 style={{ color: "var(--color-gold-500)" }}
@@ -88,7 +81,7 @@ export function SiteFooter() {
 
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-[color:var(--color-border)] pt-8 text-sm text-[color:var(--color-text-lo)] sm:flex-row sm:items-center">
           <span>
-            &copy; {new Date().getFullYear()} Lumagine A.I. All rights reserved.
+            &copy; {new Date().getFullYear()} Lumagen A.I. All rights reserved.
           </span>
           <span>Cairo · Egypt</span>
         </div>

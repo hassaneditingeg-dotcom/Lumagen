@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   // Tree-shake motion + lucide imports — these libs export many icons / hooks
   // and bringing them in via barrel imports can pull more than needed.
   experimental: {
-    optimizePackageImports: ["motion", "lucide-react"],
+    optimizePackageImports: ["motion"],
   },
 
   // Compression is on by default; explicit for clarity.

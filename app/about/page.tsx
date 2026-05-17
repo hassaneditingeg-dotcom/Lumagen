@@ -7,7 +7,6 @@ import { Section } from "@/components/marketing/Section";
 import { Counter } from "@/components/motion/Counter";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { Reveal } from "@/components/motion/Reveal";
-import { TiltCard } from "@/components/motion/TiltCard";
 
 export const metadata: Metadata = {
   title: "About",
@@ -43,7 +42,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="About"
         title="From Cairo, for the world's products."
-        body="Lumagine A.I is a creative studio for ecommerce brands. We build the imagery that turns scrollers into buyers — listing hero shots, A+ Content modules, storefronts, lifestyle scenes, and social-first creatives — using AI tooling sharpened by years of editorial craft."
+        body="Lumagen A.I is a creative studio for ecommerce brands. We build the imagery that turns scrollers into buyers — listing hero shots, A+ Content modules, storefronts, lifestyle scenes, and social-first creatives — using AI tooling sharpened by years of editorial craft."
       />
 
       <Section spacing="tight">
@@ -84,7 +83,7 @@ export default function AboutPage() {
               </div>
               <div className="space-y-6 text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] text-[color:var(--color-text-mid)]">
                 <p>
-                  Lumagine A.I started where most sellers get stuck: between a
+                  Lumagen A.I started where most sellers get stuck: between a
                   great product and a great listing. The product was finished;
                   the imagery wasn&rsquo;t. Studios were booked months out, prices
                   were closer to ad spend than craft costs, and the round-trip
@@ -114,7 +113,7 @@ export default function AboutPage() {
         <Divider />
       </Container>
 
-      <Section>
+      <Section className="section-ambient-warm">
         <Container>
           <Reveal>
             <span className="eyebrow">How we work</span>
@@ -122,24 +121,26 @@ export default function AboutPage() {
               Three principles, hard-coded.
             </h2>
           </Reveal>
-          <div className="mt-14 grid gap-5 md:grid-cols-3">
+          <div className="mt-14 grid gap-5 md:grid-cols-2">
             {VALUES.map((v, i) => (
               <Reveal key={v.title} delay={i * 0.05}>
-                <TiltCard as="article" className="surface-card p-7">
+                <div
+                  className={`surface-card p-7 ${i === 0 ? "md:col-span-2 md:grid md:grid-cols-[1fr_2fr] md:items-center md:gap-10 md:p-10" : ""}`}
+                >
                   <h3 className="text-[length:var(--text-display-md)] font-[600] tracking-[var(--text-display-md--letter-spacing)]">
                     {v.title}
                   </h3>
-                  <p className="mt-3 text-[color:var(--color-text-mid)]">
+                  <p className={`text-[color:var(--color-text-mid)] ${i === 0 ? "mt-4 md:mt-0" : "mt-3"}`}>
                     {v.body}
                   </p>
-                </TiltCard>
+                </div>
               </Reveal>
             ))}
           </div>
         </Container>
       </Section>
 
-      <Section>
+      <Section className="section-ambient-light">
         <Reveal className="mx-auto max-w-4xl text-center">
           <h2 className="text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
             Want to see what we&rsquo;d do with your product?

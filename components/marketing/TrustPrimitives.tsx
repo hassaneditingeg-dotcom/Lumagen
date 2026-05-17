@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { cn } from "@/lib/utils";
 
@@ -65,9 +64,9 @@ export function CTARow({
         {primaryLabel}
       </MagneticButton>
       {secondaryHref && secondaryLabel && (
-        <Link href={secondaryHref} className="btn-secondary">
+        <MagneticButton href={secondaryHref} className="btn-secondary">
           {secondaryLabel}
-        </Link>
+        </MagneticButton>
       )}
       {note && (
         <span className="basis-full text-xs text-[color:var(--color-text-lo)] sm:basis-auto">

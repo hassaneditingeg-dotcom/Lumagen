@@ -35,6 +35,11 @@ export default function HomePage() {
           HERO
           =========================================================== */}
       <section className="relative overflow-hidden px-6 pt-28 pb-12 sm:pt-32 lg:pt-40 lg:pb-16">
+        <div className="hero-mesh" aria-hidden="true">
+          <span className="blob-1" />
+          <span className="blob-2" />
+          <span className="blob-3" />
+        </div>
         <div className="relative z-10 mx-auto max-w-7xl">
           <div
             className="grid items-center gap-16 lg:grid-cols-[1.05fr_1fr] lg:gap-20"
@@ -45,10 +50,10 @@ export default function HomePage() {
               <span className="eyebrow mt-7 block hero-enter hero-enter-2">Zero to Hero Studio</span>
               <h1 className="mt-6 text-[length:var(--text-display-2xl)] font-[700] leading-[var(--text-display-2xl--line-height)] tracking-[var(--text-display-2xl--letter-spacing)] hero-enter hero-enter-3">
                 Product visuals that make shoppers{" "}
-                <span className="gradient-text">trust the click.</span>
+                <span className="accent-gold">trust the click.</span>
               </h1>
               <p className="mt-7 max-w-xl text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] text-[color:var(--color-text-mid)] hero-enter hero-enter-4">
-                Lumagine A.I turns raw SKU photos into marketplace-ready
+                Lumagen A.I turns raw SKU photos into marketplace-ready
                 listing carousels, lifestyle scenes, and storefront assets for
                 Amazon, TikTok Shop, Shopify, eBay, and Etsy.
               </p>
@@ -100,7 +105,7 @@ export default function HomePage() {
       {/* ===========================================================
           HOW IT WORKS
           =========================================================== */}
-      <section className="relative px-6 py-24 lg:py-32">
+      <section className="section-ambient-warm px-6 py-24 lg:py-28">
         <Container>
           <Reveal>
             <div className="mb-12 max-w-3xl">
@@ -127,7 +132,7 @@ export default function HomePage() {
           BEFORE / AFTER
           =========================================================== */}
       {beforeEntry && afterEntry && (
-        <section className="relative px-6 py-24 lg:py-32">
+        <section className="relative px-6 py-24 lg:py-28">
           <Container>
             <Reveal>
               <div className="mb-12 grid items-end gap-8 lg:grid-cols-[1fr_1fr]">
@@ -183,10 +188,13 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-5 md:grid-cols-2">
             {SERVICES.map((s, i) => (
               <Reveal key={s.title} delay={i * 0.04}>
-                <TiltCard as="article" className="surface-card p-7">
+                <TiltCard
+                  as="article"
+                  className={`surface-card p-7 ${i === 0 ? "md:col-span-2" : ""}`}
+                >
                   <span className="text-xs font-[600] uppercase tracking-[0.22em] text-[color:var(--color-text-lo)]">
                     {String(i + 1).padStart(2, "0")} ·{" "}
                     <span style={{ color: "var(--color-gold-500)" }}>
@@ -213,14 +221,14 @@ export default function HomePage() {
       {/* ===========================================================
           SHOWCASE — Terra Lotus
           =========================================================== */}
-      <section className="relative px-6 py-24 lg:py-32">
+      <section className="section-ambient-cool px-6 py-24 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <Reveal>
             <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
               <div>
-                <span className="eyebrow">Launch case study</span>
+                <span className="eyebrow">Case study</span>
                 <h2 className="mt-4 max-w-2xl text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
-                  {BRANDS[0].name} &mdash; botanical skincare, full creative system.
+                  {BRANDS[0].name}: botanical skincare, full creative system.
                 </h2>
                 <p className="mt-5 max-w-2xl text-[color:var(--color-text-mid)]">
                   {BRANDS[0].oneLiner}
@@ -255,7 +263,7 @@ export default function HomePage() {
       {/* ===========================================================
           PRICING PREVIEW
           =========================================================== */}
-      <section className="relative px-6 py-24 lg:py-32">
+      <section className="section-ambient-light px-6 py-24 lg:py-28">
         <Container>
           <Reveal>
             <div className="mb-12 text-center">
@@ -293,7 +301,7 @@ export default function HomePage() {
       {/* ===========================================================
           TESTIMONIALS
           =========================================================== */}
-      <section className="relative overflow-hidden px-6 py-24 lg:py-32">
+      <section className="section-ambient-cool overflow-hidden px-6 py-24 lg:py-28">
         <Container className="relative z-10">
           <Reveal>
             <div className="mb-12">
@@ -319,11 +327,11 @@ export default function HomePage() {
       {/* ===========================================================
           FAQ
           =========================================================== */}
-      <section className="relative px-6 py-24 lg:py-32">
+      <section className="section-ambient-warm px-6 py-24 lg:py-32">
         <Container>
           <Reveal>
             <div className="mb-12 max-w-3xl">
-              <span className="eyebrow">Frequently asked</span>
+              <span className="eyebrow">Common questions</span>
               <h2 className="mt-4 text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
                 What sellers ask before they brief us.
               </h2>
@@ -342,14 +350,14 @@ export default function HomePage() {
       {/* ===========================================================
           CTA BAND
           =========================================================== */}
-      <section className="relative px-6 py-24 lg:py-32">
+      <section className="section-ambient-light px-6 py-28 lg:py-36">
         <Reveal className="mx-auto max-w-4xl text-center">
           <span className="eyebrow">Ready when you are</span>
           <h2 className="mt-5 text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
             Send us your product. Get back a qualified sample direction.
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-[length:var(--text-body-lg)] text-[color:var(--color-text-mid)]">
-            No commitment, no template &mdash; a single hero image rendered
+            No commitment, no template. A single hero image rendered
             for your actual SKU so you can see what we&rsquo;d deliver
             before signing anything.
           </p>

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Lumagine A.I — Zero to Hero Studio";
+export const alt = "Lumagen A.I — Zero to Hero Studio";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -34,7 +34,7 @@ export default function OGImage() {
             <circle cx={14} cy={14} r={3.5} fill="#c9a84c" />
           </svg>
           <span style={{ fontSize: 28, fontWeight: 700, letterSpacing: "-0.02em" }}>
-            Lumagine
+            Lumagen
             <span style={{ color: "#c9a84c", fontSize: 16, marginLeft: 8, textTransform: "uppercase", letterSpacing: "0.2em" }}>
               A.I
             </span>

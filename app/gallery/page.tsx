@@ -110,7 +110,7 @@ export default async function GalleryPage({
       {/* ===========================================================
           CLOSING NOTE — keep the page quiet at the end.
           =========================================================== */}
-      <Section spacing="tight">
+      <Section spacing="tight" className="section-ambient-light">
         <Container className="max-w-2xl">
           <Reveal>
             <div className="border-t border-[color:var(--color-border-strong)] pt-12 text-center">

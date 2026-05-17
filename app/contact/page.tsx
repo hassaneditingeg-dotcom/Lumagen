@@ -29,7 +29,7 @@ export default function ContactPage() {
         </Container>
       </section>
 
-      <Section spacing="tight">
+      <Section spacing="tight" className="section-ambient-light">
         <Container className="max-w-4xl">
           <Reveal delay={0.1}>
             <ContactForm />
@@ -38,8 +38,8 @@ export default function ContactPage() {
             <div className="mt-12 grid gap-6 sm:grid-cols-3">
               <Detail
                 label="Email"
-                value="hello@lumagine.ai"
-                href="mailto:hello@lumagine.ai"
+                value="hello@lumagen.ai"
+                href="mailto:hello@lumagen.ai"
               />
               <Detail label="Reply time" value="Usually 1 business day" />
               <Detail label="Based in" value="Cairo, Egypt" />

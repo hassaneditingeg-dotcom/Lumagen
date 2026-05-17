@@ -37,7 +37,7 @@ export function StickyCTA({ hideOn = [] }: { hideOn?: string[] }) {
         >
           <Link
             href="/contact"
-            className="pointer-events-auto inline-flex items-center gap-3 rounded-full px-5 py-2.5 text-sm font-[600] backdrop-blur-md"
+            className="pointer-events-auto inline-flex items-center gap-3 rounded-full px-5 py-2.5 text-sm font-[600] backdrop-blur-md active:scale-[0.97] transition-transform duration-150"
             style={{
               background: "rgba(13, 12, 10, 0.82)",
               border: "1px solid var(--color-border-strong)",
@@ -46,10 +46,9 @@ export function StickyCTA({ hideOn = [] }: { hideOn?: string[] }) {
             }}
           >
             <span
-              className="inline-block h-1.5 w-1.5 rounded-full"
+              className="sticky-status-dot inline-block h-1.5 w-1.5 rounded-full"
               style={{
                 background: "var(--color-gold-500)",
-                boxShadow: "0 0 8px var(--color-gold-500)",
               }}
             />
             <span>Start a Project</span>

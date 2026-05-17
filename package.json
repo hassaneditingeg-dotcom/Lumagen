@@ -1,8 +1,8 @@
 {
-  "name": "lumagine",
+  "name": "lumagen",
   "version": "0.1.0",
   "private": true,
-  "description": "Lumagine A.I — Zero to Hero Studio",
+  "description": "Lumagen A.I — Zero to Hero Studio",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

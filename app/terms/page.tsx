@@ -5,7 +5,7 @@ import { Section } from "@/components/marketing/Section";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "The terms that govern projects and use of the Lumagine A.I site.",
+  description: "The terms that govern projects and use of the Lumagen A.I site.",
   alternates: { canonical: "/terms" },
   robots: { index: true, follow: true },
 };
@@ -43,7 +43,7 @@ export default function TermsPage() {
 
             <Block title="Intellectual property">
               Site content (copy, visual design, code, brand marks) is © 2026
-              Lumagine A.I. Project deliverables are transferred to the client
+              Lumagen A.I. Project deliverables are transferred to the client
               upon final payment, per each SOW. Reference / source images
               you upload remain yours.
             </Block>
@@ -75,10 +75,10 @@ export default function TermsPage() {
             <Block title="Contact">
               Questions about these terms go to{" "}
               <a
-                href="mailto:hello@lumagine.ai"
+                href="mailto:hello@lumagen.ai"
                 className="underline decoration-[color:var(--color-border-strong)] underline-offset-4 transition-colors hover:text-[color:var(--color-gold-500)]"
               >
-                hello@lumagine.ai
+                hello@lumagen.ai
               </a>
               .
             </Block>

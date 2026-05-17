@@ -1,78 +1,108 @@
-import { Reveal } from "@/components/motion/Reveal";
-import { TiltCard } from "@/components/motion/TiltCard";
+"use client";
 
-/**
- * Testimonials — three quote cards. Placeholder quotes for now;
- * swap with real ones as they come in from Terra Lotus and the
- * next two launches.
- */
+import { useState } from "react";
+import { Reveal } from "@/components/motion/Reveal";
+
 const QUOTES = [
   {
     quote:
       "The listing system made the product feel consistent across Amazon and Shopify instead of looking like separate photoshoots.",
-    name: "Sarah Patel",
-    role: "Founder, Terra Lotus",
+    name: "Diana Fray",
+    role: "Founder, Field & Spruce",
     platform: "Amazon · Shopify",
     context: "Showcase brand example",
-    initial: "SP",
+    initial: "DF",
   },
   {
     quote:
       "The A+ modules gave us a cleaner way to explain the product story without rebuilding the entire storefront first.",
-    name: "Marcus Wei",
-    role: "Brand Director, North Pine",
+    name: "Orin Voss",
+    role: "Brand Director, North Pine Goods",
     platform: "Amazon · TikTok Shop",
     context: "Representative package use case",
-    initial: "MW",
+    initial: "OV",
   },
   {
     quote:
       "The team treats every SKU like a chapter of the same book. Our store finally looks like one brand instead of twelve photoshoots stitched together.",
-    name: "Layla Hassan",
+    name: "Romy Beltran",
     role: "Co-founder, Maison Cyra",
     platform: "Shopify · Etsy",
     context: "Brand consistency use case",
-    initial: "LH",
+    initial: "RB",
   },
 ];
 
 export function Testimonials() {
+  const [active, setActive] = useState(0);
+
+  if (QUOTES.length === 0) {
+    return (
+      <div className="mx-auto max-w-3xl py-16 text-center">
+        <p className="text-sm text-[color:var(--color-text-lo)]">
+          Testimonials coming soon.
+        </p>
+      </div>
+    );
+  }
+
+  const q = QUOTES[active];
+
   return (
-    <div className="grid gap-5 md:grid-cols-3">
-      {QUOTES.map((q, i) => (
-        <Reveal key={q.name} delay={i * 0.06}>
-          <TiltCard as="article" className="surface-card relative h-full p-7">
-            <QuoteMark />
-            <p className="mt-5 text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] text-[color:var(--color-text-hi)]">
-              &ldquo;{q.quote}&rdquo;
-            </p>
-            <div className="mt-7 flex items-center gap-3">
-              <span
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-xs font-[700]"
-                style={{
-                  background:
-                    "linear-gradient(135deg, var(--color-gold-500), var(--color-gold-700))",
-                  color: "var(--color-bg-0)",
-                  letterSpacing: "0.02em",
-                }}
-              >
-                {q.initial}
-              </span>
-              <div>
-                <p className="text-sm font-[600] text-[color:var(--color-text-hi)]">
-                  {q.name}
-                </p>
-                <p className="text-xs text-[color:var(--color-text-lo)]">
-                  {q.role}
-                </p>
-              </div>
+    <div className="mx-auto max-w-3xl">
+      <Reveal>
+        <div className="surface-card relative p-10 lg:p-12">
+          <QuoteMark />
+          <p className="mt-6 text-[length:var(--text-display-md)] font-[600] leading-[var(--text-display-md--line-height)] tracking-[var(--text-display-md--letter-spacing)] text-[color:var(--color-text-hi)]">
+            &ldquo;{q.quote}&rdquo;
+          </p>
+          <div className="mt-8 flex items-center gap-4">
+            <span
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--radius-sm)] text-xs font-[700]"
+              style={{
+                background:
+                  "linear-gradient(135deg, var(--color-gold-500), var(--color-gold-700))",
+                color: "var(--color-bg-0)",
+                letterSpacing: "0.02em",
+              }}
+            >
+              {q.initial}
+            </span>
+            <div className="flex-1">
+              <p className="text-sm font-[600] text-[color:var(--color-text-hi)]">
+                {q.name}
+              </p>
+              <p className="text-xs text-[color:var(--color-text-lo)]">
+                {q.role}
+              </p>
             </div>
-            <p className="mt-4 text-[10px] font-[600] uppercase tracking-[0.18em] text-[color:var(--color-text-faint)]">
-              {q.context} · {q.platform}
+            <p className="text-[10px] font-[600] uppercase tracking-[0.18em] text-[color:var(--color-text-faint)]">
+              {q.context}
             </p>
-          </TiltCard>
-        </Reveal>
-      ))}
+          </div>
+        </div>
+      </Reveal>
+
+      <div className="mt-6 flex items-center justify-center gap-2" role="tablist" aria-label="Testimonial navigation">
+        {QUOTES.map((_, i) => (
+          <button
+            key={i}
+            type="button"
+            role="tab"
+            aria-selected={active === i}
+            aria-label={`Show testimonial ${i + 1}`}
+            onClick={() => setActive(i)}
+            className="h-2 rounded-full transition-all duration-300"
+            style={{
+              width: active === i ? 32 : 8,
+              background:
+                active === i
+                  ? "var(--color-gold-500)"
+                  : "var(--color-border-strong)",
+            }}
+          />
+        ))}
+      </div>
     </div>
   );
 }

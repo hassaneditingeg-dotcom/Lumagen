@@ -46,11 +46,11 @@ export function SiteHeader() {
         <Link
           href="/"
           className="group flex items-center gap-2.5"
-          aria-label="Lumagine A.I home"
+          aria-label="Lumagen A.I home"
         >
           <Logomark />
           <span className="text-lg font-[700] tracking-[-0.02em] text-[color:var(--color-text-hi)]">
-            Lumagine
+            Lumagen
             <span
               className="ml-1.5 align-[0.1em] text-[0.65em] font-[500] uppercase tracking-[0.2em]"
               style={{ color: "var(--color-gold-500)" }}

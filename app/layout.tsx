@@ -25,29 +25,29 @@ const instrument = Instrument_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Lumagine A.I — Zero to Hero Studio",
-    template: "%s · Lumagine A.I",
+    default: "Lumagen A.I — Zero to Hero Studio",
+    template: "%s · Lumagen A.I",
   },
   description:
     "AI creative studio for Amazon, TikTok Shop, Shopify, eBay, and Etsy sellers. Listing imagery, A+ Content, storefronts, lifestyle scenes, and social creatives built to support buyer confidence.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://lumagine.ai"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://lumagen.ai"),
   alternates: { canonical: "/" },
-  applicationName: "Lumagine A.I",
-  authors: [{ name: "Lumagine A.I" }],
-  creator: "Lumagine A.I",
-  publisher: "Lumagine A.I",
+  applicationName: "Lumagen A.I",
+  authors: [{ name: "Lumagen A.I" }],
+  creator: "Lumagen A.I",
+  publisher: "Lumagen A.I",
   formatDetection: { email: false, address: false, telephone: false },
   openGraph: {
-    title: "Lumagine A.I — Zero to Hero Studio",
+    title: "Lumagen A.I — Zero to Hero Studio",
     description:
       "AI-crafted listings, storefronts, and A+ content for ecommerce brands.",
     type: "website",
     locale: "en_US",
-    siteName: "Lumagine A.I",
+    siteName: "Lumagen A.I",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lumagine A.I — Zero to Hero Studio",
+    title: "Lumagen A.I — Zero to Hero Studio",
     description:
       "AI-crafted listings, storefronts, and A+ content for ecommerce brands.",
   },

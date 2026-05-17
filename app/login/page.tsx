@@ -4,7 +4,7 @@ import { Container } from "@/components/marketing/Container";
 
 export const metadata: Metadata = {
   title: "Sign in",
-  description: "Client dashboard for Lumagine A.I projects.",
+  description: "Client dashboard for Lumagen A.I projects.",
 };
 
 export default function LoginPage() {

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllBrandSlugs } from "@/lib/brands";
 import { getAllSlugs } from "@/lib/services";
 
-const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lumagine.ai";
+const SITE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lumagen.ai";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

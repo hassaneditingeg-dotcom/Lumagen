@@ -5,7 +5,7 @@ import { Section } from "@/components/marketing/Section";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How Lumagine A.I collects, uses, and protects your data.",
+  description: "How Lumagen A.I collects, uses, and protects your data.",
   alternates: { canonical: "/privacy" },
   robots: { index: true, follow: true },
 };
@@ -53,10 +53,10 @@ export default function PrivacyPage() {
             <Block title="Your rights">
               Email{" "}
               <a
-                href="mailto:privacy@lumagine.ai"
+                href="mailto:privacy@lumagen.ai"
                 className="underline decoration-[color:var(--color-border-strong)] underline-offset-4 transition-colors hover:text-[color:var(--color-gold-500)]"
               >
-                privacy@lumagine.ai
+                privacy@lumagen.ai
               </a>{" "}
               to request access, correction, or deletion of your data. We
               respond within 30 days.
@@ -71,10 +71,10 @@ export default function PrivacyPage() {
             <Block title="Contact">
               Questions about this policy go to{" "}
               <a
-                href="mailto:privacy@lumagine.ai"
+                href="mailto:privacy@lumagen.ai"
                 className="underline decoration-[color:var(--color-border-strong)] underline-offset-4 transition-colors hover:text-[color:var(--color-gold-500)]"
               >
-                privacy@lumagine.ai
+                privacy@lumagen.ai
               </a>
               .
             </Block>

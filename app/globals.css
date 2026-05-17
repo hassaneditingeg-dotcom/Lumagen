@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 /* =====================================================================
-   Lumagine A.I — design tokens
-   Restrained high-end palette: warm near-black + antique-gold action
-   accent + cool sage proof accent. Atmospheric, type-driven, and
-   conversion-trust oriented without decorative orb clutter.
+   Lumagen A.I — design tokens
+   Restrained high-end palette: warm near-black + single antique-gold
+   accent throughout. Atmospheric, type-driven, and conversion-trust
+   oriented without decorative orb clutter.
    All text WCAG AA-verified on --color-bg-0.
    ===================================================================== */
 
@@ -29,12 +29,6 @@
   --color-gold-600: #a8884a;
   --color-gold-700: #7e6633;
 
-  /* Secondary support — cool trust accent, used sparingly for proof cues */
-  --color-sage-300: #b7e5d5;
-  --color-sage-400: #7fcfb9;
-  --color-sage-500: #4fae98;
-  --color-sage-700: #245f54;
-
   /* Cardboard tones — for the 3D Amazon box */
   --color-cardboard-300: #d3b48a;
   --color-cardboard-400: #c3a070;
@@ -52,7 +46,7 @@
   --color-border-soft: rgba(240, 234, 216, 0.04);
   --color-border-strong: rgba(201, 168, 76, 0.2);
   --color-border-bright: rgba(201, 168, 76, 0.38);
-  --color-border-proof: rgba(127, 207, 185, 0.22);
+  --color-border-proof: rgba(201, 168, 76, 0.15);
 
   /* Radii */
   --radius-sm: 0.5rem;
@@ -61,16 +55,16 @@
   --radius-xl: 1.25rem;
   --radius-pill: 9999px;
 
-  /* Shadows */
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.35);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.45);
-  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.55);
-  --shadow-lg: 0 24px 80px rgba(0, 0, 0, 0.65);
-  --shadow-xl: 0 36px 120px rgba(0, 0, 0, 0.75);
+  /* Shadows — warm-tinted to match the near-black background */
+  --shadow-xs: 0 1px 2px rgba(10, 8, 6, 0.55);
+  --shadow-sm: 0 2px 8px rgba(10, 8, 6, 0.62);
+  --shadow-md: 0 8px 28px rgba(10, 8, 6, 0.70);
+  --shadow-lg: 0 24px 80px rgba(10, 8, 6, 0.78);
+  --shadow-xl: 0 36px 120px rgba(10, 8, 6, 0.84);
   --shadow-gold-sm: 0 0 24px rgba(201, 168, 76, 0.12);
   --shadow-gold-md: 0 0 48px rgba(201, 168, 76, 0.16);
   --shadow-gold-lg: 0 0 90px rgba(201, 168, 76, 0.22);
-  --shadow-proof-sm: 0 0 24px rgba(127, 207, 185, 0.12);
+  --shadow-proof-sm: 0 0 24px rgba(201, 168, 76, 0.10);
 
   /* Easings */
   --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
@@ -146,17 +140,19 @@
     touch-action: manipulation;
   }
 
-  /* Static editorial atmosphere: broad vignettes, no floating orbs. */
+  /* Editorial atmosphere: broad vignettes with slow gold shimmer */
   body::before {
     content: "";
     position: fixed;
-    inset: -20%;
+    inset: -40%;
     pointer-events: none;
     z-index: 0;
     background:
-      linear-gradient(150deg, rgba(201, 168, 76, 0.1), transparent 32%),
-      linear-gradient(28deg, rgba(127, 207, 185, 0.06), transparent 30%),
+      linear-gradient(150deg, rgba(201, 168, 76, 0.08), transparent 32%),
+      linear-gradient(220deg, rgba(201, 168, 76, 0.04), transparent 28%),
       linear-gradient(180deg, transparent 0%, rgba(13, 12, 10, 0.7) 72%, var(--color-bg-0) 100%);
+    background-size: 200% 200%;
+    animation: bodyShimmer 28s ease-in-out infinite;
   }
 
   /* Fractal-noise grain — depth without busyness */
@@ -222,7 +218,7 @@
     gap: 0.5rem;
     padding: 0.375rem 0.75rem 0.375rem 0.625rem;
     border-radius: var(--radius-pill);
-    background: rgba(127, 207, 185, 0.08);
+    background: rgba(201, 168, 76, 0.08);
     border: 1px solid var(--color-border-proof);
     font-size: 0.75rem;
     font-weight: 500;
@@ -234,14 +230,19 @@
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 999px;
-    background: var(--color-sage-400);
-    box-shadow: 0 0 12px rgba(127, 207, 185, 0.42);
+    background: var(--color-gold-500);
+    box-shadow: 0 0 12px rgba(201, 168, 76, 0.42);
     animation: pulseDot 2.4s ease-in-out infinite;
   }
 
   @keyframes pulseDot {
     0%, 100% { opacity: 1; transform: scale(1); }
     50%      { opacity: 0.55; transform: scale(0.85); }
+  }
+
+  /* StickyCTA pill — gentle gold pulse on the status dot */
+  .sticky-status-dot {
+    animation: goldPulse 3s ease-in-out infinite;
   }
 
   /* Primary CTA — refined: solid gold, subtle pressed state, ring on hover */
@@ -288,7 +289,7 @@
   .btn-primary:hover::after {
     transform: translateX(100%);
   }
-  .btn-primary:active { transform: translateY(0); }
+  .btn-primary:active { transform: scale(0.97); }
 
   /* Secondary — refined: subtle gold-tinted border, smooth fill on hover */
   .btn-secondary {
@@ -311,6 +312,7 @@
     border-color: var(--color-border-bright);
     transform: translateY(-1px);
   }
+  .btn-secondary:active { transform: scale(0.97); }
 
   /* Surface card — gold-bloom border on hover + edge-gradient sweep */
   .surface-card {
@@ -347,9 +349,9 @@
   .surface-card > * { position: relative; z-index: 1; }
   .surface-card:hover {
     background: var(--color-bg-2);
-    border-color: var(--color-border-strong);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
+    border-color: var(--color-border-bright);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg), var(--shadow-gold-sm);
   }
   .surface-card:hover::before { opacity: 1; }
 
@@ -377,6 +379,55 @@
     background: var(--color-gold-500);
     box-shadow: 0 0 16px rgba(201, 168, 76, 0.5);
   }
+
+  /* Section ambient backgrounds — subtle depth for flat sections */
+  .section-ambient-light {
+    position: relative;
+  }
+  .section-ambient-light::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 60% 40% at 50% 0%, rgba(201, 168, 76, 0.04), transparent 80%),
+      radial-gradient(ellipse 50% 30% at 80% 100%, rgba(201, 168, 76, 0.03), transparent 70%);
+    z-index: 0;
+    animation: ambientBreath 12s ease-in-out infinite;
+  }
+  .section-ambient-light > * { position: relative; z-index: 1; }
+
+  .section-ambient-warm {
+    position: relative;
+  }
+  .section-ambient-warm::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 70% 35% at 20% 10%, rgba(201, 168, 76, 0.06), transparent 70%),
+      radial-gradient(ellipse 40% 50% at 90% 80%, rgba(201, 168, 76, 0.03), transparent 60%);
+    z-index: 0;
+    animation: ambientBreath 15s ease-in-out infinite;
+  }
+  .section-ambient-warm > * { position: relative; z-index: 1; }
+
+  .section-ambient-cool {
+    position: relative;
+  }
+  .section-ambient-cool::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 50% 30% at 80% 0%, rgba(201, 168, 76, 0.05), transparent 70%),
+      radial-gradient(ellipse 60% 40% at 20% 100%, rgba(201, 168, 76, 0.03), transparent 60%);
+    z-index: 0;
+    animation: ambientBreath 18s ease-in-out infinite;
+  }
+  .section-ambient-cool > * { position: relative; z-index: 1; }
 
   /* Hairline kept for compatibility (older sections still use it) */
   .hairline {
@@ -468,7 +519,7 @@
     height: 0.45rem;
     flex: 0 0 auto;
     border-radius: 999px;
-    background: var(--color-sage-400);
+    background: var(--color-gold-500);
     box-shadow: var(--shadow-proof-sm);
   }
 
@@ -482,7 +533,7 @@
     border: 1px solid var(--color-border-proof);
     border-radius: var(--radius-lg);
     background:
-      linear-gradient(135deg, rgba(127, 207, 185, 0.08), transparent 48%),
+      linear-gradient(135deg, rgba(201, 168, 76, 0.08), transparent 48%),
       var(--color-bg-1);
     box-shadow: var(--shadow-sm), var(--shadow-proof-sm);
   }
@@ -508,12 +559,9 @@
     width: 70%;
   }
 
-  /* Gradient text — gold-to-warm sweep for hero headlines */
-  .gradient-text {
-    background: linear-gradient(120deg, var(--color-text-hi) 0%, var(--color-gold-300) 45%, var(--color-gold-500) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  /* Gold emphasis — solid accent for hero hooks, no gradient */
+  .accent-gold {
+    color: var(--color-gold-500);
   }
 
   /* Float — gentle continuous levitation for CTAs / badges */
@@ -781,6 +829,121 @@
     letter-spacing: -0.01em;
   }
 }
+
+/* =====================================================================
+   Perpetual background animations — gold shimmer sweep + ambient pulse
+   All hardware-accelerated (transform / opacity only), applied to
+   pointer-events-none layers so they never block interaction.
+   ===================================================================== */
+
+/* Slow gold shimmer sweep across the body atmosphere */
+@keyframes bodyShimmer {
+  0%   { background-position: 0% 0%; }
+  50%  { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* Gentle breath for section ambient overlays */
+@keyframes ambientBreath {
+  0%   { opacity: 0.6; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+/* Subtle gold pulse for proof panels and status dots */
+@keyframes goldPulse {
+  0%   { box-shadow: 0 0 8px rgba(201, 168, 76, 0.2); }
+  50%  { box-shadow: 0 0 20px rgba(201, 168, 76, 0.4); }
+  100% { box-shadow: 0 0 8px rgba(201, 168, 76, 0.2); }
+}
+
+/* =====================================================================
+   Hero mesh gradient — organic gold blobs orbiting behind the hero
+   ===================================================================== */
+
+.hero-mesh {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.hero-mesh span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  will-change: transform;
+}
+.hero-mesh .blob-1 {
+  width: clamp(280px, 40vw, 500px);
+  height: clamp(280px, 40vw, 500px);
+  background: rgba(201, 168, 76, 0.13);
+  top: -12%;
+  left: -8%;
+  animation: meshOrbit1 22s ease-in-out infinite;
+}
+.hero-mesh .blob-2 {
+  width: clamp(200px, 30vw, 400px);
+  height: clamp(200px, 30vw, 400px);
+  background: rgba(201, 168, 76, 0.08);
+  bottom: -18%;
+  right: -6%;
+  animation: meshOrbit2 28s ease-in-out infinite;
+}
+.hero-mesh .blob-3 {
+  width: clamp(160px, 20vw, 300px);
+  height: clamp(160px, 20vw, 300px);
+  background: rgba(201, 168, 76, 0.06);
+  top: 40%;
+  left: 50%;
+  animation: meshOrbit3 32s ease-in-out infinite;
+}
+
+@keyframes meshOrbit1 {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  25%  { transform: translate(10%, -8%) scale(1.12); }
+  50%  { transform: translate(-6%, -14%) scale(0.92); }
+  75%  { transform: translate(-10%, 5%) scale(1.06); }
+  100% { transform: translate(0%, 0%) scale(1); }
+}
+@keyframes meshOrbit2 {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  25%  { transform: translate(-10%, 8%) scale(0.9); }
+  50%  { transform: translate(6%, 14%) scale(1.1); }
+  75%  { transform: translate(12%, -5%) scale(0.95); }
+  100% { transform: translate(0%, 0%) scale(1); }
+}
+@keyframes meshOrbit3 {
+  0%   { transform: translate(0%, 0%) scale(1); }
+  33%  { transform: translate(8%, -6%) scale(1.08); }
+  66%  { transform: translate(-8%, 6%) scale(0.94); }
+  100% { transform: translate(0%, 0%) scale(1); }
+}
+
+/* =====================================================================
+   Button click ripple — CSS-only radial flash from center on :active
+   Uses ::before so it doesn't conflict with ::after (glossy sweep).
+   ===================================================================== */
+
+  .btn-primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.3) 0%, transparent 60%);
+    opacity: 0;
+    transform: scale(0.3);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .btn-primary:active::before {
+    animation: rippleFlash 0.35s ease-out forwards;
+  }
+  @keyframes rippleFlash {
+    0%   { opacity: 0; transform: scale(0.3); }
+    25%  { opacity: 1; }
+    100% { opacity: 0; transform: scale(2.5); }
+  }
 
 /* =====================================================================
    Reduced motion — disables drift / float / marquee / reveals

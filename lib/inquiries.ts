@@ -38,7 +38,7 @@ export async function submitInquiry(formData: FormData): Promise<InquiryResult> 
   const inquiry = {
     ...parsed.data,
     created_at: new Date().toISOString(),
-    source: "lumagine.ai/contact",
+    source: "lumagen.ai/contact",
   };
 
   if (isSupabaseConfigured()) {
@@ -49,17 +49,17 @@ export async function submitInquiry(formData: FormData): Promise<InquiryResult> 
         console.error("[inquiry] supabase insert failed", error);
         return {
           ok: false,
-          error: "Something went wrong on our side. Please email us at hello@lumagine.ai.",
+          error: "Something went wrong on our side. Please email us at hello@lumagen.ai.",
         };
       }
       return { ok: true };
     }
   }
 
-  // Fallback: append to /tmp/lumagine-inquiries.json so we don't lose
+  // Fallback: append to /tmp/lumagen-inquiries.json so we don't lose
   // submissions during local dev before Supabase is wired.
   try {
-    const path = join(tmpdir(), "lumagine-inquiries.json");
+    const path = join(tmpdir(), "lumagen-inquiries.json");
     let existing: unknown[] = [];
     try {
       const raw = await fs.readFile(path, "utf-8");

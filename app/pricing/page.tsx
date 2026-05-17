@@ -118,7 +118,7 @@ export default function PackagesPage() {
         </Section>
       ))}
 
-      <Section>
+      <Section className="section-ambient-light">
         <Reveal className="mx-auto max-w-4xl text-center">
           <h2 className="text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
             Not sure which package fits?

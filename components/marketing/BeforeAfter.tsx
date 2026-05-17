@@ -13,7 +13,7 @@ export function BeforeAfter({
   before,
   after,
   beforeLabel = "Source photo",
-  afterLabel = "Lumagine A.I",
+  afterLabel = "Lumagen A.I",
 }: {
   before: GalleryEntry;
   after: GalleryEntry;

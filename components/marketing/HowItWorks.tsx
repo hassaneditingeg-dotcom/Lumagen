@@ -1,5 +1,4 @@
 import { Reveal } from "@/components/motion/Reveal";
-import { TiltCard } from "@/components/motion/TiltCard";
 
 /**
  * HowItWorks — three-step explainer for skeptical first-time buyers.
@@ -27,18 +26,18 @@ const STEPS = [
 
 export function HowItWorks() {
   return (
-    <div className="grid gap-5 md:grid-cols-3">
+    <div className="grid gap-6 md:grid-cols-3">
       {STEPS.map((s, i) => (
         <Reveal key={s.n} delay={i * 0.05}>
-          <TiltCard as="article" className="surface-card relative h-full p-8">
-            <div className="flex items-baseline gap-3">
+          <div className="group surface-card relative h-full p-8">
+            <div className="flex items-center gap-4">
               <span
-                className="font-[700] tracking-[-0.04em]"
+                className="font-[700] tracking-[-0.04em] leading-none"
                 style={{
                   fontFamily: "var(--font-display)",
-                  fontSize: "clamp(2.5rem, 4vw, 3.5rem)",
+                  fontSize: "clamp(2rem, 3vw, 2.5rem)",
                   color: "var(--color-gold-500)",
-                  opacity: 0.85,
+                  opacity: 0.7,
                 }}
               >
                 {s.n}
@@ -53,11 +52,11 @@ export function HowItWorks() {
                 />
               )}
             </div>
-            <h3 className="mt-5 text-[length:var(--text-display-md)] font-[600] tracking-[var(--text-display-md--letter-spacing)]">
+            <h3 className="mt-6 text-[length:var(--text-display-md)] font-[600] tracking-[var(--text-display-md--letter-spacing)]">
               {s.title}
             </h3>
             <p className="mt-3 text-[color:var(--color-text-mid)]">{s.body}</p>
-          </TiltCard>
+          </div>
         </Reveal>
       ))}
     </div>
