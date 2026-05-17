@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useScroll } from "motion/react";
 import { MagneticLink } from "@/components/motion/MagneticLink";
 import { cn } from "@/lib/utils";
 
@@ -17,13 +18,12 @@ export function SiteHeader() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { scrollY } = useScroll();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const unsubscribe = scrollY.on("change", (latest) => setScrolled(latest > 20));
+    return unsubscribe;
+  }, [scrollY, setScrolled]);
 
   return (
     <header

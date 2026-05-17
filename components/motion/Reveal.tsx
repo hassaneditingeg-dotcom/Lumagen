@@ -30,8 +30,9 @@ const itemVariants: Variants = {
     y: 0,
     filter: "blur(0px)",
     transition: {
-      duration: 0.75,
-      ease: [0.19, 1, 0.22, 1], // ease-out-expo
+      type: "spring",
+      stiffness: 100,
+      damping: 20,
     },
   },
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useScroll } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -9,19 +9,21 @@ import { useEffect, useState } from "react";
  * StickyCTA — fades in after the user scrolls past the hero. Always
  * one tap away from starting a project on long pages. Hidden on the
  * /contact page itself so it doesn't compete with the real form.
+ *
+ * Uses motion's useScroll() instead of a raw scroll listener
+ * to stay within the MOTION_INTENSITY 6 guardrails.
  */
 export function StickyCTA({ hideOn = [] }: { hideOn?: string[] }) {
+  const { scrollY } = useScroll();
   const [visible, setVisible] = useState(false);
   const pathname = usePathname() ?? "";
 
   useEffect(() => {
-    const onScroll = () => {
-      setVisible(window.scrollY > window.innerHeight * 0.85);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const unsubscribe = scrollY.on("change", (latest) => {
+      setVisible(latest > window.innerHeight * 0.85);
+    });
+    return unsubscribe;
+  }, [scrollY]);
 
   const shouldHide = hideOn.some((p) => pathname === p || pathname.startsWith(p));
 
@@ -32,7 +34,7 @@ export function StickyCTA({ hideOn = [] }: { hideOn?: string[] }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
-          transition={{ duration: 0.35, ease: [0.19, 1, 0.22, 1] }}
+          transition={{ type: "spring", stiffness: 100, damping: 20 }}
           className="pointer-events-none fixed inset-x-0 bottom-6 z-40 flex justify-center px-6"
         >
           <Link

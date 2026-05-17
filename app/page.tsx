@@ -42,7 +42,7 @@ export default function HomePage() {
         </div>
         <div className="relative z-10 mx-auto max-w-7xl">
           <div
-            className="grid items-center gap-16 lg:grid-cols-[1.05fr_1fr] lg:gap-20"
+            className="grid items-center gap-16 lg:grid-cols-[1.3fr_0.7fr] lg:gap-24"
             style={{ containerType: "inline-size" }}
           >
             <Reveal>
@@ -105,10 +105,10 @@ export default function HomePage() {
       {/* ===========================================================
           HOW IT WORKS
           =========================================================== */}
-      <section className="section-ambient-warm px-6 py-24 lg:py-28">
+      <section className="section-ambient-warm px-6 py-28 lg:py-36">
         <Container>
           <Reveal>
-            <div className="mb-12 max-w-3xl">
+            <div className="mb-16 max-w-3xl">
               <span className="eyebrow">How it works</span>
               <h2 className="mt-4 text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
                 Brief to delivered in days, not months.
@@ -132,10 +132,10 @@ export default function HomePage() {
           BEFORE / AFTER
           =========================================================== */}
       {beforeEntry && afterEntry && (
-        <section className="relative px-6 py-24 lg:py-28">
+        <section className="relative px-6 py-28 lg:py-36">
           <Container>
             <Reveal>
-              <div className="mb-12 grid items-end gap-8 lg:grid-cols-[1fr_1fr]">
+              <div className="mb-16 grid items-end gap-8 lg:grid-cols-[1fr_1fr]">
                 <div>
                   <span className="eyebrow">The transformation</span>
                   <h2 className="mt-4 text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
@@ -169,7 +169,7 @@ export default function HomePage() {
       {/* ===========================================================
           SERVICES
           =========================================================== */}
-      <section className="relative px-6 py-24 lg:py-32">
+      <section className="relative px-6 py-28 lg:py-40">
         <div className="mx-auto max-w-7xl">
           <Reveal>
             <div className="flex items-end justify-between gap-8">
@@ -221,10 +221,10 @@ export default function HomePage() {
       {/* ===========================================================
           SHOWCASE — Terra Lotus
           =========================================================== */}
-      <section className="section-ambient-cool px-6 py-24 lg:py-28">
+      <section className="section-ambient-cool px-6 py-28 lg:py-36">
         <div className="mx-auto max-w-7xl">
           <Reveal>
-            <div className="mb-12 flex flex-wrap items-end justify-between gap-6">
+            <div className="mb-16 flex flex-wrap items-end justify-between gap-6">
               <div>
                 <span className="eyebrow">Case study</span>
                 <h2 className="mt-4 max-w-2xl text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
@@ -263,10 +263,10 @@ export default function HomePage() {
       {/* ===========================================================
           PRICING PREVIEW
           =========================================================== */}
-      <section className="section-ambient-light px-6 py-24 lg:py-28">
+      <section className="section-ambient-light px-6 py-28 lg:py-36">
         <Container>
           <Reveal>
-            <div className="mb-12 text-center">
+            <div className="mb-16 text-center">
               <span className="eyebrow">Popular packages</span>
               <h2 className="mt-4 text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
                 Pricing you can actually plan around.
@@ -301,10 +301,10 @@ export default function HomePage() {
       {/* ===========================================================
           TESTIMONIALS
           =========================================================== */}
-      <section className="section-ambient-cool overflow-hidden px-6 py-24 lg:py-28">
+      <section className="section-ambient-cool overflow-hidden px-6 py-28 lg:py-36">
         <Container className="relative z-10">
           <Reveal>
-            <div className="mb-12">
+            <div className="mb-16">
               <span className="eyebrow">What founders say</span>
               <h2 className="mt-4 max-w-2xl text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
                 Trusted by sellers who scale.
@@ -327,10 +327,10 @@ export default function HomePage() {
       {/* ===========================================================
           FAQ
           =========================================================== */}
-      <section className="section-ambient-warm px-6 py-24 lg:py-32">
+      <section className="section-ambient-warm px-6 py-28 lg:py-40">
         <Container>
           <Reveal>
-            <div className="mb-12 max-w-3xl">
+            <div className="mb-16 max-w-3xl">
               <span className="eyebrow">Common questions</span>
               <h2 className="mt-4 text-[length:var(--text-display-lg)] font-[700] leading-[var(--text-display-lg--line-height)] tracking-[var(--text-display-lg--letter-spacing)]">
                 What sellers ask before they brief us.
