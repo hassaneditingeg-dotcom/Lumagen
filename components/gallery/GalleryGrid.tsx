@@ -45,6 +45,7 @@ export function GalleryGrid({ entries }: { entries: GalleryEntry[] }) {
               onClick={() => setActiveIdx(i)}
               className={cn(
                 "group relative block w-full overflow-hidden rounded-[var(--radius-md)] border border-[color:var(--color-border)] transition-[border-color,transform] duration-500 ease-out hover:border-[color:var(--color-border-strong)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--color-gold-500)]",
+                "gallery-tile",
                 isFeature
                   ? "col-span-2 row-span-2 lg:col-span-2 lg:row-span-2"
                   : "col-span-1 row-span-1",

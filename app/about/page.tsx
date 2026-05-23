@@ -11,7 +11,7 @@ import { Reveal } from "@/components/motion/Reveal";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Cairo-based AI creative studio building listing imagery, storefronts, and A+ content for ecommerce sellers worldwide.",
+    "AI creative studio building listing imagery, storefronts, and A+ content for ecommerce sellers worldwide.",
 };
 
 const STATS = [
@@ -41,7 +41,7 @@ export default function AboutPage() {
     <main className="relative z-10">
       <PageHero
         eyebrow="About"
-        title="From Cairo, for the world's products."
+        title="A creative studio for products that need to sell."
         body="Lumagen A.I is a creative studio for ecommerce brands. We build the imagery that turns scrollers into buyers — listing hero shots, A+ Content modules, storefronts, lifestyle scenes, and social-first creatives — using AI tooling sharpened by years of editorial craft."
       />
 

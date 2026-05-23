@@ -32,7 +32,7 @@ export function ProofMetric({
 }) {
   return (
     <div className="proof-panel p-5">
-      <p className="font-[700] tabular-nums tracking-[var(--text-display-md--letter-spacing)] text-[length:var(--text-display-md)] text-[color:var(--color-text-hi)]">
+      <p className="metric-value font-[700] tabular-nums tracking-[var(--text-display-md--letter-spacing)] text-[length:var(--text-display-md)] text-[color:var(--color-text-hi)]">
         {value}
       </p>
       <p className="mt-1 text-sm font-[600] text-[color:var(--color-text-mid)]">

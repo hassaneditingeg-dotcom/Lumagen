@@ -41,10 +41,10 @@ export function TiltCard({
   const cx = useMotionValue(50);
   const cy = useMotionValue(50);
 
-  const rx = useSpring(rotateX, { stiffness: 160, damping: 22, mass: 0.5 });
-  const ry = useSpring(rotateY, { stiffness: 160, damping: 22, mass: 0.5 });
+  const rx = useSpring(rotateX, { stiffness: 145, damping: 24, mass: 0.62 });
+  const ry = useSpring(rotateY, { stiffness: 145, damping: 24, mass: 0.62 });
 
-  const spotlightBg = useMotionTemplate`radial-gradient(220px circle at ${cx}% ${cy}%, rgba(201, 168, 76, 0.12), transparent 70%)`;
+  const spotlightBg = useMotionTemplate`radial-gradient(260px circle at ${cx}% ${cy}%, rgba(201, 168, 76, 0.14), rgba(127, 207, 185, 0.05) 34%, transparent 72%)`;
 
   const handleMove = (e: React.MouseEvent) => {
     if (reducedMotion) return;
@@ -83,6 +83,7 @@ export function TiltCard({
         rotateY: reducedMotion ? 0 : ry,
         transformStyle: "preserve-3d",
         perspective: 1200,
+        willChange: hovered && !reducedMotion ? "transform" : "auto",
       }}
     >
       {spotlight && (

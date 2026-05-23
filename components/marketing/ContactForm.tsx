@@ -218,7 +218,7 @@ export function ContactForm() {
           {pending ? "Sending…" : "Send Brief"}
         </button>
         <span className="text-xs text-[color:var(--color-text-lo)]">
-          Typical first reply: 1 business day, Cairo time.
+          Typical first reply: 1 business day.
         </span>
       </div>
     </form>

@@ -17,7 +17,7 @@ export function StatsStrip() {
     <Container className="py-10 lg:py-12">
       <div className="grid grid-cols-3 divide-x divide-[color:var(--color-border-proof)]">
         {STATS.map((s) => (
-          <div key={s.label} className="px-4 text-center first:pl-0 last:pr-0">
+          <div key={s.label} className="stat-cell px-4 text-center first:pl-0 last:pr-0">
             <p className="text-[length:var(--text-display-md)] font-[700] tracking-[var(--text-display-md--letter-spacing)] text-[color:var(--color-text-hi)]">
               <Counter value={s.value} suffix={s.suffix} duration={1.8} />
             </p>

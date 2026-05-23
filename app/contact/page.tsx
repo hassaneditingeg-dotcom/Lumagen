@@ -42,7 +42,7 @@ export default function ContactPage() {
                 href="mailto:hello@lumagen.ai"
               />
               <Detail label="Reply time" value="Usually 1 business day" />
-              <Detail label="Based in" value="Cairo, Egypt" />
+              <Detail label="Availability" value="Worldwide projects" />
             </div>
           </Reveal>
         </Container>

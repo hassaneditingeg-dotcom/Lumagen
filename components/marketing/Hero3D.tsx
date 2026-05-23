@@ -70,6 +70,11 @@ function Hero3DTile({
 
   return (
     <Link ref={ref} href={href} className="hero-3d-tile" aria-label={`Browse ${label} work`}>
+      <div className="hero-3d-circuit" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </div>
       <div className="hero-3d-scene" aria-hidden="true">
         {children}
       </div>

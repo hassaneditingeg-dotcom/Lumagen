@@ -15,28 +15,39 @@ export function BrandStrip({
   entries: GalleryEntry[];
   href?: string;
 }) {
+  const tileShapes = [
+    "aspect-[16/11] lg:basis-[31%]",
+    "aspect-[4/5] lg:basis-[21%] lg:mt-10",
+    "aspect-square lg:basis-[22%]",
+    "aspect-[5/6] lg:basis-[22%] lg:mt-5",
+  ];
+
   return (
-    <div className="relative -mr-6 overflow-hidden">
-      <div className="flex gap-4 overflow-x-auto pr-6 pb-4 snap-x snap-mandatory lg:snap-none">
+    <div className="relative -mr-6 overflow-hidden lg:-mr-0">
+      <div className="flex gap-4 overflow-x-auto pr-6 pb-4 snap-x snap-mandatory lg:gap-5 lg:pr-0 lg:snap-none">
         {entries.map((entry, i) => (
           <Link
             key={entry.id}
             href={href ?? "/gallery"}
-            className="group block min-w-0 basis-[68%] flex-none snap-start sm:basis-[42%] lg:basis-[23%]"
+            className={`group block min-w-0 basis-[72%] flex-none snap-start sm:basis-[44%] ${tileShapes[i % tileShapes.length]}`}
           >
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-md)] border border-[color:var(--color-border)]">
+            <div className="brand-strip-card h-full">
               <Image
                 src={entry.variants["800"]}
                 width={entry.width}
                 height={entry.height}
                 alt={entry.alt || ""}
-                sizes="(min-width: 1024px) 22vw, (min-width: 640px) 42vw, 68vw"
+                sizes="(min-width: 1024px) 30vw, (min-width: 640px) 44vw, 72vw"
                 placeholder="blur"
                 blurDataURL={entry.blurDataURL}
                 unoptimized
                 loading={i < 2 ? "eager" : "lazy"}
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                className="h-full w-full object-cover transition-transform duration-700 ease-[var(--ease-out-soft)] group-hover:scale-[1.035]"
               />
+              <span className="brand-strip-label">
+                <span>{entry.category === "white-bg" ? "Clean SKU" : entry.category}</span>
+                <span>{String(i + 1).padStart(2, "0")}</span>
+              </span>
             </div>
           </Link>
         ))}

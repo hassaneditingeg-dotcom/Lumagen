@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Codex's in-app browser opens 127.0.0.1 by default; allow that dev origin
+  // so HMR and client hydration work during local review.
+  allowedDevOrigins: ["127.0.0.1"],
+
   // Tree-shake motion + lucide imports — these libs export many icons / hooks
   // and bringing them in via barrel imports can pull more than needed.
   experimental: {

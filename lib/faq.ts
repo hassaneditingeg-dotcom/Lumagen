@@ -40,8 +40,8 @@ export const FAQ_DATA: { question: string; answer: string }[] = [
       "Yes — that's the default workflow. Send your brand guide, palette, type system, and any existing photography. We design the new imagery as a coherent extension of what you already have, not a parallel aesthetic.",
   },
   {
-    question: "Where are you based?",
+    question: "Do you work internationally?",
     answer:
-      "Cairo, Egypt. We work with brands worldwide, with the bulk of clients on Amazon US, TikTok Shop US, and Shopify. All communication is in English and timezone-flexible.",
+      "Yes. We work with brands worldwide, with the bulk of clients selling on Amazon US, TikTok Shop US, and Shopify. All communication is in English and timezone-flexible.",
   },
 ];

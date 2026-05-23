@@ -24,10 +24,11 @@ const containerVariants: Variants = {
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24, filter: "blur(6px)" },
+  hidden: { opacity: 0, y: 38, scale: 0.985, filter: "blur(10px)" },
   visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     filter: "blur(0px)",
     transition: {
       type: "spring",
@@ -58,7 +59,7 @@ export function Reveal({
   // Always render motion wrappers to keep SSR/client DOM identical.
   // When reduced motion is active, collapse animations to instant.
   const resolvedItem: Variants = reducedMotion
-    ? { hidden: { opacity: 1, y: 0, filter: "none" }, visible: { opacity: 1, y: 0, filter: "none" } }
+    ? { hidden: { opacity: 1, y: 0, scale: 1, filter: "none" }, visible: { opacity: 1, y: 0, scale: 1, filter: "none" } }
     : itemVariants;
 
   return (
@@ -76,7 +77,7 @@ export function Reveal({
       }}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, amount }}
+      viewport={{ once, amount, margin: "0px 0px -8% 0px" }}
     >
       {Array.isArray(children) ? (
         children.map((child, i) => (

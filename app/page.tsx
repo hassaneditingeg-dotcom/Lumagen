@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight, Search } from "lucide-react";
 import { BeforeAfter } from "@/components/marketing/BeforeAfter";
 import { BrandStrip } from "@/components/marketing/BrandStrip";
 import { Container } from "@/components/marketing/Container";
@@ -6,6 +7,7 @@ import { Divider } from "@/components/marketing/Divider";
 import { FAQ } from "@/components/marketing/FAQ";
 import { Hero3D } from "@/components/marketing/Hero3D";
 import { HowItWorks } from "@/components/marketing/HowItWorks";
+import { ImageSplitShowcase } from "@/components/marketing/ImageSplitShowcase";
 import { PlatformLogos } from "@/components/marketing/PlatformLogos";
 import { PlatformMarquee } from "@/components/marketing/PlatformMarquee";
 import { PricingPreview } from "@/components/marketing/PricingPreview";
@@ -17,7 +19,7 @@ import { TiltCard } from "@/components/motion/TiltCard";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { BRANDS } from "@/lib/brands";
 import { FAQ_DATA } from "@/lib/faq";
-import { MANIFEST } from "@/lib/gallery/manifest";
+import { MANIFEST, type GalleryEntry } from "@/lib/gallery/manifest";
 import { faqPageSchema } from "@/lib/seo";
 
 export default function HomePage() {
@@ -26,6 +28,18 @@ export default function HomePage() {
   // "After" = the AI-crafted lifestyle / in-context scene.
   const beforeEntry = MANIFEST["white-bg"][0];
   const afterEntry = MANIFEST.lifestyle[0];
+  const splitHero = MANIFEST.lifestyle[2] ?? MANIFEST.lifestyle[0];
+  const splitSupport = MANIFEST.listings[5] ?? MANIFEST.listings[0];
+  const splitDetail = MANIFEST["white-bg"][2] ?? MANIFEST["white-bg"][0];
+  const showcaseEntries = [
+    MANIFEST.lifestyle[2],
+    MANIFEST["white-bg"][0],
+    MANIFEST.listings[5],
+    MANIFEST.lifestyle[6],
+    MANIFEST.listings[8],
+    MANIFEST["white-bg"][3],
+    MANIFEST.lifestyle[10],
+  ].filter((entry): entry is GalleryEntry => Boolean(entry));
 
   return (
     <main className="relative z-10">
@@ -48,16 +62,32 @@ export default function HomePage() {
             <Reveal>
               <span className="status-pill hero-enter hero-enter-1">Accepting new ecommerce briefs · May 2026</span>
               <span className="eyebrow mt-7 block hero-enter hero-enter-2">Zero to Hero Studio</span>
-              <h1 className="mt-6 text-[length:var(--text-display-2xl)] font-[700] leading-[var(--text-display-2xl--line-height)] tracking-[var(--text-display-2xl--letter-spacing)] hero-enter hero-enter-3">
+              <h1 className="mt-6 text-[length:var(--text-display-xl)] font-[700] leading-[var(--text-display-xl--line-height)] tracking-[var(--text-display-xl--letter-spacing)] hero-enter hero-enter-3">
                 Product visuals that make shoppers{" "}
-                <span className="accent-gold">trust the click.</span>
+                <span className="gradient-text">trust the click.</span>
               </h1>
               <p className="mt-7 max-w-xl text-[length:var(--text-body-lg)] leading-[var(--text-body-lg--line-height)] text-[color:var(--color-text-mid)] hero-enter hero-enter-4">
                 Lumagen A.I turns raw SKU photos into marketplace-ready
                 listing carousels, lifestyle scenes, and storefront assets for
                 Amazon, TikTok Shop, Shopify, eBay, and Etsy.
               </p>
-              <div className="mt-8 grid max-w-xl gap-3 sm:grid-cols-3">
+              <Link
+                href="/contact"
+                className="hero-brief-bar hero-enter hero-enter-5 mt-8"
+                aria-label="Start a project brief"
+              >
+                <span className="hero-brief-icon" aria-hidden="true">
+                  <Search size={18} strokeWidth={1.8} />
+                </span>
+                <span className="min-w-0">
+                  <span className="hero-brief-kicker">Tell us what you sell</span>
+                  <span className="hero-brief-placeholder">Skincare, kitchen, wellness, decor...</span>
+                </span>
+                <span className="hero-brief-action" aria-hidden="true">
+                  <ArrowRight size={18} strokeWidth={1.9} />
+                </span>
+              </Link>
+              <div className="hero-enter hero-enter-6 mt-8 grid max-w-xl gap-3 sm:grid-cols-3">
                 <ProofMetric
                   value="48h"
                   label="Sample Direction"
@@ -74,7 +104,7 @@ export default function HomePage() {
                   note="Included on fixed-scope packages before final export."
                 />
               </div>
-              <div className="mt-10">
+              <div className="hero-enter hero-enter-6 mt-10">
                 <CTARow
                   primaryLabel="Request a Sample"
                   secondaryHref="/gallery"
@@ -84,8 +114,10 @@ export default function HomePage() {
               </div>
             </Reveal>
 
-            <div>
-              <Hero3D />
+            <div className="hero-enter hero-enter-4">
+              <div className="float-anim">
+                <Hero3D />
+              </div>
             </div>
           </div>
         </div>
@@ -101,6 +133,19 @@ export default function HomePage() {
       <Container>
         <Divider />
       </Container>
+
+      {splitHero && splitSupport && splitDetail && (
+        <>
+          <ImageSplitShowcase
+            hero={splitHero}
+            support={splitSupport}
+            detail={splitDetail}
+          />
+          <Container>
+            <Divider />
+          </Container>
+        </>
+      )}
 
       {/* ===========================================================
           HOW IT WORKS
@@ -245,11 +290,7 @@ export default function HomePage() {
 
           <Reveal delay={0.15}>
             <BrandStrip
-              entries={[
-                ...MANIFEST["white-bg"].slice(0, 2),
-                ...MANIFEST.lifestyle.slice(0, 3),
-                ...MANIFEST.listings.slice(0, 3),
-              ]}
+              entries={showcaseEntries}
               href={`/brands/${BRANDS[0].slug}`}
             />
           </Reveal>

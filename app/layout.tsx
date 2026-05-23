@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
+import { Bricolage_Grotesque, Geist_Mono, Instrument_Sans } from "next/font/google";
 import { SiteHeader } from "@/components/marketing/SiteHeader";
 import { SiteFooter } from "@/components/marketing/SiteFooter";
+import { FloatingOrbs } from "@/components/marketing/FloatingOrbs";
 import { StickyCTA } from "@/components/marketing/StickyCTA";
 import { CursorGlow } from "@/components/motion/CursorGlow";
 import { WebVitals } from "@/components/perf/WebVitals";
@@ -18,6 +19,13 @@ const bricolage = Bricolage_Grotesque({
 
 const instrument = Instrument_Sans({
   variable: "--font-instrument",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
@@ -77,13 +85,14 @@ export default function RootLayout({
   return (
     <html
       lang="en-US"
-      className={`${bricolage.variable} ${instrument.variable} antialiased`}
+      className={`${bricolage.variable} ${instrument.variable} ${geistMono.variable} antialiased`}
     >
       <body>
         <JsonLd id="ld-organization" data={organizationSchema()} />
         <JsonLd id="ld-website" data={websiteSchema()} />
         <WebVitals />
         <a href="#main" className="skip-to-content">Skip to content</a>
+        <FloatingOrbs />
         <SiteHeader />
         <div id="main">
           {children}

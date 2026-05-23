@@ -1,6 +1,6 @@
 # Lumagen A.I
 
-> **Zero to Hero Studio** — AI-crafted listing imagery, storefronts, A+ content, and social creatives for Amazon, TikTok Shop, Shopify, eBay, and Etsy sellers. Made in Cairo.
+> **Zero to Hero Studio** — AI-crafted listing imagery, storefronts, A+ content, and social creatives for Amazon, TikTok Shop, Shopify, eBay, and Etsy sellers.
 
 A six-phase rebuild from a vanilla HTML portfolio into a production marketing site plus client dashboard.
 
@@ -15,7 +15,7 @@ A six-phase rebuild from a vanilla HTML portfolio into a production marketing si
 - **Auth + DB + Storage**: Supabase (Phase 4)
 - **Email**: Resend (Phase 5)
 - **Analytics**: Vercel Analytics + Posthog (Phase 6)
-- **Hosting**: Vercel (Frankfurt edge — best Cairo latency)
+- **Hosting**: Vercel
 
 ---
 
@@ -101,7 +101,7 @@ The `assets/` and `_legacy/` folders are already in `.vercelignore` so the 1.8GB
 ### Supabase
 
 1. Create a Supabase project. **Pro tier ($25/mo) recommended from day 1** — free tier's 1GB storage cap will be exceeded immediately by the asset library.
-2. Region: `eu-central-1` (closest to Cairo).
+2. Region: choose the deployment region closest to your primary customers.
 3. Copy URL + anon key + service-role key into `.env.local` and Vercel env vars.
 4. When ready for Phase 2: run `pnpm tsx scripts/migrate-assets.ts` locally to populate Storage.
 

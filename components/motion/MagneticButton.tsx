@@ -72,7 +72,12 @@ export function MagneticButton({
     >
       {href ? (
         <Link href={href} className={className} aria-label={ariaLabel} onClick={onClick}>
-          {inner}
+          <motion.span
+            style={{ display: "inline-flex" }}
+            whileTap={reducedMotion ? undefined : { scale: 0.985 }}
+          >
+            {inner}
+          </motion.span>
         </Link>
       ) : (
         <button
@@ -81,7 +86,12 @@ export function MagneticButton({
           aria-label={ariaLabel}
           onClick={onClick}
         >
-          {inner}
+          <motion.span
+            style={{ display: "inline-flex" }}
+            whileTap={reducedMotion ? undefined : { scale: 0.985 }}
+          >
+            {inner}
+          </motion.span>
         </button>
       )}
     </span>

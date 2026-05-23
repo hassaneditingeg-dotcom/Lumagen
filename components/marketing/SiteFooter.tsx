@@ -51,7 +51,7 @@ export function SiteFooter() {
             </p>
             <p className="mt-4 max-w-sm text-[color:var(--color-text-mid)]">
               Zero to Hero Studio — AI-crafted listings, storefronts, and A+
-              content for ecommerce brands. Made in Cairo, shipping worldwide.
+              content for ecommerce brands. Built for sellers worldwide.
             </p>
           </div>
 
@@ -83,7 +83,7 @@ export function SiteFooter() {
           <span>
             &copy; {new Date().getFullYear()} Lumagen A.I. All rights reserved.
           </span>
-          <span>Cairo · Egypt</span>
+          <span>Remote studio · Worldwide delivery</span>
         </div>
       </div>
     </footer>

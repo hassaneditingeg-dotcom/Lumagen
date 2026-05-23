@@ -85,12 +85,11 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <Link
             href="/contact"
-            className="hidden h-10 items-center rounded-full bg-[color:var(--color-gold-500)] px-5 text-sm font-semibold text-[color:var(--color-bg-0)] transition-[background-color,box-shadow,transform] hover:-translate-y-0.5 hover:bg-[color:var(--color-gold-400)] sm:inline-flex"
-            style={{
-              boxShadow: "var(--shadow-gold-sm), inset 0 1px 0 rgba(255,255,255,0.3)",
-            }}
+            className="btn-primary hidden h-10 px-5 text-sm sm:inline-flex"
           >
-            Start a Project
+            <span>
+              <span>Start a Project</span>
+            </span>
           </Link>
           <button
             type="button"
@@ -126,9 +125,11 @@ export function SiteHeader() {
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="mt-3 inline-flex h-11 items-center justify-center rounded-full bg-[color:var(--color-gold-500)] px-5 text-sm font-semibold text-[color:var(--color-bg-0)]"
+              className="btn-primary mt-3 h-11 px-5 text-sm"
             >
-              Start a Project
+              <span>
+                <span>Start a Project</span>
+              </span>
             </Link>
           </nav>
         </div>
@@ -168,11 +169,11 @@ function BurgerIcon({ open }: { open: boolean }) {
         y2={open ? "7" : "2"}
         stroke="currentColor"
         strokeWidth="1.5"
-                strokeLinecap="round"
+        strokeLinecap="round"
         style={{
           transform: open ? "rotate(45deg)" : "none",
           transformOrigin: "center",
-          transition: "transform 200ms ease, y 200ms ease",
+          transition: "transform 200ms ease",
         }}
       />
       <line
@@ -199,7 +200,7 @@ function BurgerIcon({ open }: { open: boolean }) {
         style={{
           transform: open ? "rotate(-45deg)" : "none",
           transformOrigin: "center",
-          transition: "transform 200ms ease, y 200ms ease",
+          transition: "transform 200ms ease",
         }}
       />
     </svg>

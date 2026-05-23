@@ -68,8 +68,10 @@ export default function TermsPage() {
             </Block>
 
             <Block title="Governing law">
-              These terms are governed by the laws of Egypt. Disputes resolve
-              through good-faith negotiation first, then arbitration in Cairo.
+              These terms are governed by the law stated in the accepted
+              project agreement. Disputes resolve through good-faith
+              negotiation first, then the dispute process named in that
+              agreement.
             </Block>
 
             <Block title="Contact">

@@ -32,16 +32,11 @@ export function organizationSchema() {
     image: `${SITE}/og`,
     foundingDate: "2026",
     slogan: "Zero to Hero Studio",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Cairo",
-      addressCountry: "EG",
-    },
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",
       email: "hello@lumagen.ai",
-      areaServed: ["US", "CA", "GB", "AU", "EG"],
+      areaServed: ["US", "CA", "GB", "AU"],
       availableLanguage: ["en"],
     },
     areaServed: [
